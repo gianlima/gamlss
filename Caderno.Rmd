@@ -1,0 +1,226 @@
+---
+title: "Aula 03/08 - Cesar"
+output:
+  html_document:
+    theme: flatly
+    highlight: pygments
+    toc_depth: 5
+    # code_download: true
+    # code_folding: show
+    toc: true
+    toc_float:
+      collapsed: true
+    # df_print: kable
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Modelo linear generalizado:** média da variável resposta dependendo do valor das covariáveis
+
+**GAMLSS:** qualquer parâmetro da distribuição, ou seja **não apenas a média** da variável resposta, pode ser modelado em função de covariáveis.
+
+Algumas distribuições podem ter até quatro parâmetros. Pode-se ter as covariáveis associadas a qualquer um desses parametros.
+
+Resíduos padrão para o framework gamlss são os **resíduos quantílicos aleatorizados normalizados.** Caso o modelo se ajuste bem aos dados, os resíduos terão distribuição Normal Padrão.
+
+Utilidade do **wormplot**: avaliar normalidade, qqplot descontruído. Cada ponto é um resíduo, cada banda é de confiança para hipótese de normalidade. Se o modelo tiver bem ajustado, os resíduos estarão alinhado perto da reta vermelha sem padrão sistemático.
+
+**Modelar a média significa modelar a locação** da distribuição em função de covariáveis.
+
+Nos slides, `gamlss` significa o pacote e GAMLSS significa a técnica estatística como um todo.
+
+Com GAMLSS é possível:  
+- Modelar variáveis resposta com distribuição de familia exponencial
+- a relação entre a média de y e as covariáveis não precisa ser necessariamente linear, mas linearizável.
+- parâmetros estimados por algoritmo de mínimos quadrados ponderados iterativamente.
+
+**GAMLSS são semi-paramétricos porque permitem a inclusão de termos não-paramétricos associados a covariáveis, mas a base do GAMLSS é um modelo probabilístico.**
+
+***
+### Dados 
+
+Base de dados de preço de aluguel de imóveis em Munique em 1980. Os modelos aumentarão a complexidade.
+
+**Variável resposta:** valor do aluguel (marcos alemães, valor líquido)
+
+***
+### Pacote GAMLSS
+
+`library(gamlss)`  
+**Parâmetros da função** `gamlss`:  
+- `formula` = inserir o modelo  
+- Trabalhar com os parâmetros: `sigma.formula`, `nu.formula` e etc.   
+- `data` = base de dados  
+- Chutes iniciais: `mu.start`, `sigma.start`, `nu.start`,`tau.start`  
+- Fixar valores para os parâmetros: `mu.fix`, `sigma.fix`, `nu.fix`,`tau.fix` (tipo termos offset de GLM)  
+- `family`: conferir opções em `gamlss.family`. Exemplo: `NO()` normal, `BI()` binomial, `GA()` Gama, entre outros. Em `gamlss.family` é possível conferir o número de parâmetros. Cada uma poderá ser representada por `d` densidade num ponto, `p` probabilidades associadas a área, `q` para quantis  e `r` para gerar números aleatórios. Além de ter isso na base do R, também está implementado na biblioteca `gamlss`. Exemplo: `dNO()`, `pNO()`, `qNO()` e `rNO()`.  
+
+**4 parâmetros:** $\mu$ (locação), $\sigma$ (escala), $\nu$ (forma) e $\tau$.
+
+**Observação**: lembrando que há 3 tipos de distribuições: continuas, discretas e mistas.
+
+***
+### Modelos
+
+#### 1. Modelo Linear
+
+Aquele simples de regressão linear estudado no 5º período. A média da variável resposta é condicional aos valores das covariáveis. A **variância** é assumida como **constante**.
+
+Se não for homocedástico:
+a) aplica-se mínimos quadrados ponderados.  
+b) pode-se transformar os dados.   
+c) pode-se usar GAMLSS  
+
+$$y_i = \beta_0 + \beta_{1}x_{i1} + ... + \beta_{r}x_{ir} + \epsilon_i$$
+erros são independentes, Normais com média zero e variância $\sigma^2$constante. 
+
+**Observação:** mesmo modelo pode ser expresso com o modelo em GLM.
+
+Método para estimar os parâmetros do modelo: **Método de Mínimos Quadrados**. Isso pode ser feito de maneira analítica: derivar a soma de quadrados dos erros em relação $\beta$, igualar a zero e teremos as raizes. 
+
+Em GAMLSS, porém, tudo é resolvido por máxima verossimilhança.
+
+$$y|x \text{ ~Normal}(\mu_x,\sigma^2)$$
+Perceba $\mu_x$, ou seja, a média depende das covariáveis pela forma abaixo:
+
+$$\mu_x = \beta_0 + \beta_1Fl + \beta_2A + \beta_3I(H=1) + \beta_4I(loc = 2) + \beta_5I(loc = 3)$$
+$I(.)$ é função indicadora, pois é fator.   
+Exemplo: 2 níveis, apenas uma variável.  
+**Localização** tem 3 níveis, preciso de dois parâmetros $\beta_4$ e $\beta_5$.
+
+Apesar do modelo linear ser analítico, na biblioteca `gamlss` é necessário uma convergência numérica.
+
+Como saber se o **modelo se ajusta bem aos dados? Observa os resíduos**, especialmente com gráficos.
+
+***
+#### 2. Modelo Linear Generalizado
+
+Slide 21/54: Distribuição Gama, assimétrica à direita. A medida que aumenta $x$, em média, $y$ também aumenta. Além disso, a variância não é constante, a dispersão aumenta.
+
+Utiliza-se a **família exponencial.**, com parâmertros $\theta$ (canônimo) e $\phi$ (dispersão). 
+
+Modelo representado por:
+
+$$y|x \text{ ~ }f(\mu_x,\phi)$$
+$f$ pode ter qualquer distribuição da família exponencial.
+
+A média $\mu_x$ depende dos valores das covariáveis e o parâmetro $\sigma$ não depende.
+
+A partir da função de ligação logarítmica:  
+$$log(\mu_x) = \beta_0 + \beta_1Fl + \beta_2A + \beta_3I(H=1) + \beta_4I(loc = 2) + \beta_5I(loc = 3)$$
+No R, como estamos utilizando a distribuição Gama, então `gamlss(..., family = GA())`.
+
+Qual o espaço parâmetrico do parâmetro?       
+-  **toda a reta real:** função de ligação *identidade*   
+- **reais positivos:** função de ligação *logaritmica*  
+- **unitário (0,1):** função de ligação *logito*    
+
+No `gamlss`, há a função `GAIC` que calcula os AIC's ou versões mais gerais de medida de informação. Quanto **menor** o AIC, melhor o ajuste do modelo.
+
+***
+#### 3. Modelo Generalizado Aditivo (GAM)
+
+Só muda uma coisa em relação ao GLM, no GAM é possível lidar com relações não lineares entre covariáveis e resposta por meio de **suavizadores**.
+
+**Suavizadores:** termos associados a covariáveis que são incluidos no preditor de um modelo de regressão que não depende de parâmetros, depende apenas dos dados. Objetivo é descrever a tendência dos dados ou algum comportamento dos dados baseado unicamente na distribuição dos dados. É livre de parâmetros. São mais flexíveis e permitem modelar não linearidades.
+
+Efeitos de covariáveis são inseridos ao preditor por meio de funções suaves.
+
+**Modelo:**
+$$y|x \text{ ~ }f(\mu_x,\phi)$$
+**Função de ligação**:
+$$g(\mu_x) = \beta_0 + \beta_{1}x_{i1} + ... + \beta_{j}x_{j} + s_{j+1}(x_{j+1}) + ... + s_r(x_r)$$
+$s_k$ é uma função suave não paramétrica aplicada a covariável $x_k, k = j + 1, ... , r$.
+
+Neste modelo é também utilizado Gama:
+
+$$y|x \text{ ~ } Gama(\mu_x,\sigma)$$
+$$log(\mu_x) = \beta_0 + s_1(Fl) + s2(A) + \beta_1I(H=1) + \beta_2I(loc = 2) + \beta_3I(loc = 3)$$
+A função `pb()` é um suavizador da biblioteca gamlss. Usado `pb(Fl)` e `pb(A)`.
+
+***
+#### 4. Modelo Generalizado Aditivo Duplo
+
+Pode ser um GLM duplo ou um GAM duplo.
+
+Slide 36/54. Normal com variância não constante, heterocedástico. Desejo declarar que a média de y depende de x e dispersão (variância) de y também depende de x. **Ambos os parâmetros depende das covariáveis.**
+
+$$y|x \text{ ~ } D(\mu_x,\sigma_x)$$
+Haverá funções de ligação correspondente aos parâmetros $g_1(\mu_x)$ e $g_2(\sigma_x)$.
+
+$$g_1(\mu_x) = \beta_{10} + \beta_{11}x_1 + ... + \beta_{1j1}x_{j1} + ... + s_{j1}+1(x_{j1}+1) + s_{r1}(x_{r1})$$
+$$g_2(\sigma_x) = \beta_{20} + \beta_{21}x_1 + ... + \beta_{2j2}x_{j2} + ... + s_{j2}+1(x_{j2}+1) + s_{r2}(x_{r2})$$
+
+Foi escolhido criar um **modelo GAM duplo** com distribuição Gama. Ou seja, há dois preditores e dois suavizadores. 
+
+Os dois parâmetros estão definidos nos reais positivos, por isso função logarítmica em ambos os casos.
+
+**Gráfico term plot:** permite avaliar as relações principalmente quando há suavizadores. Efeito de cada covariável na média.
+
+##### **Modelo 5 **
+
+Modelo GAM Duplo com distribuição Normal Inversa.
+
+**Todos os modelos acima são casos particulares de GAMLSS**.
+
+***
+#### 6. Modelo Generalizado aditivo para locação, escala e forma.
+
+Cada parâmetro pode ser modelado em função de covariáveis.
+
+Slide 42/54. Não linearidade e assimetria. 
+
+$$y|x \text{ ~ } D(\mu_x,\sigma_x,\nu_x,\tau_x)$$
+Funções de ligação que linearizam a relação e respeitam o espaço paramétrico:
+$$g(\mu_x) =  \beta_{10}+ \beta_{11}x_{1} + ... + \beta_{1j1}x_{j1} + s_{j1+1}(x_{j1+1}) + ... + s_{r1}(x_{r1})$$
+$$g(\sigma_x) =  \beta_{20}+ \beta_{21}x_{1} + ... + \beta_{2j1}x_{j2} + s_{j2+1}(x_{j2+1}) + ... + s_{r2}(x_{r2})$$
+$$g(\nu_x) =  \beta_{30}+ \beta_{31}x_{1} + ... + \beta_{3j1}x_{j3} + s_{j3+1}(x_{j3+1}) + ... + s_{r3}(x_{r3})$$
+$$g(\tau_x) =  \beta_{40}+ \beta_{41}x_{1} + ... + \beta_{4j1}x_{j4} + s_{j4+1}(x_{j4+1}) + ... + s_{r4}(x_{r4})$$
+Observar slide 44 e 45 de 54. (importante)
+
+**Estimação de parâmetros:**  
+- gamlss não tiver suavizador e efeito aleatório: método de máxima verossimilhança  
+- se tiver: método de máxima verossimilhança *penalizada*  
+
+**Modelo 6 e 7:** Distribuição Box-Cox e Green (BCCGo). Há 3 parâmetros ($\mu, \sigma, \nu$)
+
+**Modelo:**
+
+$$y|x \text{ ~ } BCCGo(\mu_x,\sigma_x,\nu_x)$$
+
+Observação: **não é necessário** que todos os parâmetros sejam modelados em função de covariáveis, assim como **não é necessário** que todos as funções tenham as mesmas covariáveis.
+
+Fuções de ligação do GAMLSS para BCCGo.  
+- log para $\mu$  
+- log para $\sigma$  
+- identidade para $\nu$  
+
+Funções suaves para Fl e A. Comparação de modelos com Akaike (AIC) ou Akaike Generalizado (GAIC).
+
+**Funções de ligação slide 49.**
+
+##### **Modelo 6 ** 
+
+Distribuição BCCGo com função de ligação para o parâmetro $\mu$ e $\sigma$.
+
+##### **Modelo7 ** 
+
+Distribuição BCCGo com função de ligação para o parâmetro $\mu$, $\sigma$ e $\nu$.
+
+**Modelo**:
+$$y|x \text{ ~ } BCCGo(\mu_x,\sigma_x,\nu_x)$$
+
+**Função de ligação**:
+$$log(\mu_x) = \beta_{10} + s_{11}(Fl) + s_{12}(A) + \beta_{11}I(H=1) + \beta_{12}I(loc = 2) + \beta_{13}I(loc = 3)$$
+$$log(\sigma_x) = \beta_{20} + s_{21}(Fl) + s_{22}(A) + \beta_{21}I(H=1) + \beta_{22}I(loc = 2) + \beta_{23}I(loc = 3)$$
+
+$$log(\nu_x) = \beta_{30} + s_{31}(Fl) + s_{32}(A) + \beta_{31}I(H=1) + \beta_{32}I(loc = 2) + \beta_{33}I(loc = 3)$$
+
+**Modelo 7** possui o menor valor de AIC, sendo o melhor modelo, apesar da penalização.
+
+***
+
+
+

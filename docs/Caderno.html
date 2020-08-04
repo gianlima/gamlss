@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Aula 03/08 - Cesar</title>
+
+<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">GAMLSS</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Módulos
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Módulo 1 - introdução</li>
+    <li>
+      <a href="Caderno.html">Resumo</a>
+    </li>
+    <li>
+      <a href="exemplo_inicial.html">Conteúdo</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Aula 03/08 - Cesar</h1>
+
+</div>
+
+
+<p><strong>Modelo linear generalizado:</strong> média da variável resposta dependendo do valor das covariáveis</p>
+<p><strong>GAMLSS:</strong> qualquer parâmetro da distribuição, ou seja <strong>não apenas a média</strong> da variável resposta, pode ser modelado em função de covariáveis.</p>
+<p>Algumas distribuições podem ter até quatro parâmetros. Pode-se ter as covariáveis associadas a qualquer um desses parametros.</p>
+<p>Resíduos padrão para o framework gamlss são os <strong>resíduos quantílicos aleatorizados normalizados.</strong> Caso o modelo se ajuste bem aos dados, os resíduos terão distribuição Normal Padrão.</p>
+<p>Utilidade do <strong>wormplot</strong>: avaliar normalidade, qqplot descontruído. Cada ponto é um resíduo, cada banda é de confiança para hipótese de normalidade. Se o modelo tiver bem ajustado, os resíduos estarão alinhado perto da reta vermelha sem padrão sistemático.</p>
+<p><strong>Modelar a média significa modelar a locação</strong> da distribuição em função de covariáveis.</p>
+<p>Nos slides, <code>gamlss</code> significa o pacote e GAMLSS significa a técnica estatística como um todo.</p>
+<p>Com GAMLSS é possível:<br />
+- Modelar variáveis resposta com distribuição de familia exponencial - a relação entre a média de y e as covariáveis não precisa ser necessariamente linear, mas linearizável. - parâmetros estimados por algoritmo de mínimos quadrados ponderados iterativamente.</p>
+<p><strong>GAMLSS são semi-paramétricos porque permitem a inclusão de termos não-paramétricos associados a covariáveis, mas a base do GAMLSS é um modelo probabilístico.</strong></p>
+<hr />
+<div id="dados" class="section level3">
+<h3>Dados</h3>
+<p>Base de dados de preço de aluguel de imóveis em Munique em 1980. Os modelos aumentarão a complexidade.</p>
+<p><strong>Variável resposta:</strong> valor do aluguel (marcos alemães, valor líquido)</p>
+<hr />
+</div>
+<div id="pacote-gamlss" class="section level3">
+<h3>Pacote GAMLSS</h3>
+<p><code>library(gamlss)</code><br />
+<strong>Parâmetros da função</strong> <code>gamlss</code>:<br />
+- <code>formula</code> = inserir o modelo<br />
+- Trabalhar com os parâmetros: <code>sigma.formula</code>, <code>nu.formula</code> e etc.<br />
+- <code>data</code> = base de dados<br />
+- Chutes iniciais: <code>mu.start</code>, <code>sigma.start</code>, <code>nu.start</code>,<code>tau.start</code><br />
+- Fixar valores para os parâmetros: <code>mu.fix</code>, <code>sigma.fix</code>, <code>nu.fix</code>,<code>tau.fix</code> (tipo termos offset de GLM)<br />
+- <code>family</code>: conferir opções em <code>gamlss.family</code>. Exemplo: <code>NO()</code> normal, <code>BI()</code> binomial, <code>GA()</code> Gama, entre outros. Em <code>gamlss.family</code> é possível conferir o número de parâmetros. Cada uma poderá ser representada por <code>d</code> densidade num ponto, <code>p</code> probabilidades associadas a área, <code>q</code> para quantis e <code>r</code> para gerar números aleatórios. Além de ter isso na base do R, também está implementado na biblioteca <code>gamlss</code>. Exemplo: <code>dNO()</code>, <code>pNO()</code>, <code>qNO()</code> e <code>rNO()</code>.</p>
+<p><strong>4 parâmetros:</strong> <span class="math inline">\(\mu\)</span> (locação), <span class="math inline">\(\sigma\)</span> (escala), <span class="math inline">\(\nu\)</span> (forma) e <span class="math inline">\(\tau\)</span>.</p>
+<p><strong>Observação</strong>: lembrando que há 3 tipos de distribuições: continuas, discretas e mistas.</p>
+<hr />
+</div>
+<div id="modelos" class="section level3">
+<h3>Modelos</h3>
+<div id="modelo-linear" class="section level4">
+<h4>1. Modelo Linear</h4>
+<p>Aquele simples de regressão linear estudado no 5º período. A média da variável resposta é condicional aos valores das covariáveis. A <strong>variância</strong> é assumida como <strong>constante</strong>.</p>
+<p>Se não for homocedástico: a) aplica-se mínimos quadrados ponderados.<br />
+b) pode-se transformar os dados.<br />
+c) pode-se usar GAMLSS</p>
+<p><span class="math display">\[y_i = \beta_0 + \beta_{1}x_{i1} + ... + \beta_{r}x_{ir} + \epsilon_i\]</span> erros são independentes, Normais com média zero e variância <span class="math inline">\(\sigma^2\)</span>constante.</p>
+<p><strong>Observação:</strong> mesmo modelo pode ser expresso com o modelo em GLM.</p>
+<p>Método para estimar os parâmetros do modelo: <strong>Método de Mínimos Quadrados</strong>. Isso pode ser feito de maneira analítica: derivar a soma de quadrados dos erros em relação <span class="math inline">\(\beta\)</span>, igualar a zero e teremos as raizes.</p>
+<p>Em GAMLSS, porém, tudo é resolvido por máxima verossimilhança.</p>
+<p><span class="math display">\[y|x \text{ ~Normal}(\mu_x,\sigma^2)\]</span> Perceba <span class="math inline">\(\mu_x\)</span>, ou seja, a média depende das covariáveis pela forma abaixo:</p>
+<p><span class="math display">\[\mu_x = \beta_0 + \beta_1Fl + \beta_2A + \beta_3I(H=1) + \beta_4I(loc = 2) + \beta_5I(loc = 3)\]</span> <span class="math inline">\(I(.)\)</span> é função indicadora, pois é fator.<br />
+Exemplo: 2 níveis, apenas uma variável.<br />
+<strong>Localização</strong> tem 3 níveis, preciso de dois parâmetros <span class="math inline">\(\beta_4\)</span> e <span class="math inline">\(\beta_5\)</span>.</p>
+<p>Apesar do modelo linear ser analítico, na biblioteca <code>gamlss</code> é necessário uma convergência numérica.</p>
+<p>Como saber se o <strong>modelo se ajusta bem aos dados? Observa os resíduos</strong>, especialmente com gráficos.</p>
+<hr />
+</div>
+<div id="modelo-linear-generalizado" class="section level4">
+<h4>2. Modelo Linear Generalizado</h4>
+<p>Slide 21/54: Distribuição Gama, assimétrica à direita. A medida que aumenta <span class="math inline">\(x\)</span>, em média, <span class="math inline">\(y\)</span> também aumenta. Além disso, a variância não é constante, a dispersão aumenta.</p>
+<p>Utiliza-se a <strong>família exponencial.</strong>, com parâmertros <span class="math inline">\(\theta\)</span> (canônimo) e <span class="math inline">\(\phi\)</span> (dispersão).</p>
+<p>Modelo representado por:</p>
+<p><span class="math display">\[y|x \text{ ~ }f(\mu_x,\phi)\]</span> <span class="math inline">\(f\)</span> pode ter qualquer distribuição da família exponencial.</p>
+<p>A média <span class="math inline">\(\mu_x\)</span> depende dos valores das covariáveis e o parâmetro <span class="math inline">\(\sigma\)</span> não depende.</p>
+<p>A partir da função de ligação logarítmica:<br />
+<span class="math display">\[log(\mu_x) = \beta_0 + \beta_1Fl + \beta_2A + \beta_3I(H=1) + \beta_4I(loc = 2) + \beta_5I(loc = 3)\]</span> No R, como estamos utilizando a distribuição Gama, então <code>gamlss(..., family = GA())</code>.</p>
+<p>Qual o espaço parâmetrico do parâmetro?<br />
+- <strong>toda a reta real:</strong> função de ligação <em>identidade</em><br />
+- <strong>reais positivos:</strong> função de ligação <em>logaritmica</em><br />
+- <strong>unitário (0,1):</strong> função de ligação <em>logito</em></p>
+<p>No <code>gamlss</code>, há a função <code>GAIC</code> que calcula os AIC’s ou versões mais gerais de medida de informação. Quanto <strong>menor</strong> o AIC, melhor o ajuste do modelo.</p>
+<hr />
+</div>
+<div id="modelo-generalizado-aditivo-gam" class="section level4">
+<h4>3. Modelo Generalizado Aditivo (GAM)</h4>
+<p>Só muda uma coisa em relação ao GLM, no GAM é possível lidar com relações não lineares entre covariáveis e resposta por meio de <strong>suavizadores</strong>.</p>
+<p><strong>Suavizadores:</strong> termos associados a covariáveis que são incluidos no preditor de um modelo de regressão que não depende de parâmetros, depende apenas dos dados. Objetivo é descrever a tendência dos dados ou algum comportamento dos dados baseado unicamente na distribuição dos dados. É livre de parâmetros. São mais flexíveis e permitem modelar não linearidades.</p>
+<p>Efeitos de covariáveis são inseridos ao preditor por meio de funções suaves.</p>
+<p><strong>Modelo:</strong> <span class="math display">\[y|x \text{ ~ }f(\mu_x,\phi)\]</span> <strong>Função de ligação</strong>: <span class="math display">\[g(\mu_x) = \beta_0 + \beta_{1}x_{i1} + ... + \beta_{j}x_{j} + s_{j+1}(x_{j+1}) + ... + s_r(x_r)\]</span> <span class="math inline">\(s_k\)</span> é uma função suave não paramétrica aplicada a covariável <span class="math inline">\(x_k, k = j + 1, ... , r\)</span>.</p>
+<p>Neste modelo é também utilizado Gama:</p>
+<p><span class="math display">\[y|x \text{ ~ } Gama(\mu_x,\sigma)\]</span> <span class="math display">\[log(\mu_x) = \beta_0 + s_1(Fl) + s2(A) + \beta_1I(H=1) + \beta_2I(loc = 2) + \beta_3I(loc = 3)\]</span> A função <code>pb()</code> é um suavizador da biblioteca gamlss. Usado <code>pb(Fl)</code> e <code>pb(A)</code>.</p>
+<hr />
+</div>
+<div id="modelo-generalizado-aditivo-duplo" class="section level4">
+<h4>4. Modelo Generalizado Aditivo Duplo</h4>
+<p>Pode ser um GLM duplo ou um GAM duplo.</p>
+<p>Slide 36/54. Normal com variância não constante, heterocedástico. Desejo declarar que a média de y depende de x e dispersão (variância) de y também depende de x. <strong>Ambos os parâmetros depende das covariáveis.</strong></p>
+<p><span class="math display">\[y|x \text{ ~ } D(\mu_x,\sigma_x)\]</span> Haverá funções de ligação correspondente aos parâmetros <span class="math inline">\(g_1(\mu_x)\)</span> e <span class="math inline">\(g_2(\sigma_x)\)</span>.</p>
+<p><span class="math display">\[g_1(\mu_x) = \beta_{10} + \beta_{11}x_1 + ... + \beta_{1j1}x_{j1} + ... + s_{j1}+1(x_{j1}+1) + s_{r1}(x_{r1})\]</span> <span class="math display">\[g_2(\sigma_x) = \beta_{20} + \beta_{21}x_1 + ... + \beta_{2j2}x_{j2} + ... + s_{j2}+1(x_{j2}+1) + s_{r2}(x_{r2})\]</span></p>
+<p>Foi escolhido criar um <strong>modelo GAM duplo</strong> com distribuição Gama. Ou seja, há dois preditores e dois suavizadores.</p>
+<p>Os dois parâmetros estão definidos nos reais positivos, por isso função logarítmica em ambos os casos.</p>
+<p><strong>Gráfico term plot:</strong> permite avaliar as relações principalmente quando há suavizadores. Efeito de cada covariável na média.</p>
+<div id="modelo-5" class="section level5">
+<h5><strong>Modelo 5 </strong></h5>
+<p>Modelo GAM Duplo com distribuição Normal Inversa.</p>
+<p><strong>Todos os modelos acima são casos particulares de GAMLSS</strong>.</p>
+<hr />
+</div>
+</div>
+<div id="modelo-generalizado-aditivo-para-locação-escala-e-forma." class="section level4">
+<h4>6. Modelo Generalizado aditivo para locação, escala e forma.</h4>
+<p>Cada parâmetro pode ser modelado em função de covariáveis.</p>
+<p>Slide 42/54. Não linearidade e assimetria.</p>
+<p><span class="math display">\[y|x \text{ ~ } D(\mu_x,\sigma_x,\nu_x,\tau_x)\]</span> Funções de ligação que linearizam a relação e respeitam o espaço paramétrico: <span class="math display">\[g(\mu_x) =  \beta_{10}+ \beta_{11}x_{1} + ... + \beta_{1j1}x_{j1} + s_{j1+1}(x_{j1+1}) + ... + s_{r1}(x_{r1})\]</span> <span class="math display">\[g(\sigma_x) =  \beta_{20}+ \beta_{21}x_{1} + ... + \beta_{2j1}x_{j2} + s_{j2+1}(x_{j2+1}) + ... + s_{r2}(x_{r2})\]</span> <span class="math display">\[g(\nu_x) =  \beta_{30}+ \beta_{31}x_{1} + ... + \beta_{3j1}x_{j3} + s_{j3+1}(x_{j3+1}) + ... + s_{r3}(x_{r3})\]</span> <span class="math display">\[g(\tau_x) =  \beta_{40}+ \beta_{41}x_{1} + ... + \beta_{4j1}x_{j4} + s_{j4+1}(x_{j4+1}) + ... + s_{r4}(x_{r4})\]</span> Observar slide 44 e 45 de 54. (importante)</p>
+<p><strong>Estimação de parâmetros:</strong><br />
+- gamlss não tiver suavizador e efeito aleatório: método de máxima verossimilhança<br />
+- se tiver: método de máxima verossimilhança <em>penalizada</em></p>
+<p><strong>Modelo 6 e 7:</strong> Distribuição Box-Cox e Green (BCCGo). Há 3 parâmetros (<span class="math inline">\(\mu, \sigma, \nu\)</span>)</p>
+<p><strong>Modelo:</strong></p>
+<p><span class="math display">\[y|x \text{ ~ } BCCGo(\mu_x,\sigma_x,\nu_x)\]</span></p>
+<p>Observação: <strong>não é necessário</strong> que todos os parâmetros sejam modelados em função de covariáveis, assim como <strong>não é necessário</strong> que todos as funções tenham as mesmas covariáveis.</p>
+<p>Fuções de ligação do GAMLSS para BCCGo.<br />
+- log para <span class="math inline">\(\mu\)</span><br />
+- log para <span class="math inline">\(\sigma\)</span><br />
+- identidade para <span class="math inline">\(\nu\)</span></p>
+<p>Funções suaves para Fl e A. Comparação de modelos com Akaike (AIC) ou Akaike Generalizado (GAIC).</p>
+<p><strong>Funções de ligação slide 49.</strong></p>
+<div id="modelo-6" class="section level5">
+<h5><strong>Modelo 6 </strong></h5>
+<p>Distribuição BCCGo com função de ligação para o parâmetro <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span>.</p>
+</div>
+<div id="modelo7" class="section level5">
+<h5><strong>Modelo7 </strong></h5>
+<p>Distribuição BCCGo com função de ligação para o parâmetro <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span> e <span class="math inline">\(\nu\)</span>.</p>
+<p><strong>Modelo</strong>: <span class="math display">\[y|x \text{ ~ } BCCGo(\mu_x,\sigma_x,\nu_x)\]</span></p>
+<p><strong>Função de ligação</strong>: <span class="math display">\[log(\mu_x) = \beta_{10} + s_{11}(Fl) + s_{12}(A) + \beta_{11}I(H=1) + \beta_{12}I(loc = 2) + \beta_{13}I(loc = 3)\]</span> <span class="math display">\[log(\sigma_x) = \beta_{20} + s_{21}(Fl) + s_{22}(A) + \beta_{21}I(H=1) + \beta_{22}I(loc = 2) + \beta_{23}I(loc = 3)\]</span></p>
+<p><span class="math display">\[log(\nu_x) = \beta_{30} + s_{31}(Fl) + s_{32}(A) + \beta_{31}I(H=1) + \beta_{32}I(loc = 2) + \beta_{33}I(loc = 3)\]</span></p>
+<p><strong>Modelo 7</strong> possui o menor valor de AIC, sendo o melhor modelo, apesar da penalização.</p>
+<hr />
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

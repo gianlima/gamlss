@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Aula 03/08 - Cesar</title>
+
+<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">GAMLSS</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Módulos
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Módulo 1 - introdução</li>
+    <li>
+      <a href="Caderno.html">Resumo</a>
+    </li>
+    <li>
+      <a href="exemplo_inicial.html">Conteúdo</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Aula 03/08 - Cesar</h1>
+
+</div>
+
+
+<p>Este exemplo tem por objetivo motivar o uso de GAMLSS e apresentar alguns recursos implementados no pacote gamlss.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">require</span>(gamlss) <span class="co">### Carregando o pacote gamlss.</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">require</span>(gamlss.demo)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">options</span>(<span class="dt">device =</span> <span class="st">&#39;x11&#39;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">data</span>(rent) <span class="co">### Dados sobre aluguéis de imóveis em Munique, 1980.</span></span></code></pre></div>
+<p>Vamos considerar para a análise o valor do aluguel dos imóveis (R)além de quatro covariáveis: Fl, A, H e loc.</p>
+<div id="análise-exploratória" class="section level4">
+<h4>Análise exploratória</h4>
+<p>Inicialmente, vamos construir alguns gráficos para explorar as relações entre as variáveis.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">las =</span> <span class="dv">1</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">plot</span>(R <span class="op">~</span><span class="st"> </span>Fl, <span class="dt">data =</span> rent, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">plot</span>(R <span class="op">~</span><span class="st"> </span>A, <span class="dt">data =</span> rent, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">plot</span>(R <span class="op">~</span><span class="st"> </span>H, <span class="dt">data =</span> rent, <span class="dt">col =</span> <span class="st">&#39;lightblue&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">plot</span>(R <span class="op">~</span><span class="st"> </span>loc, <span class="dt">data =</span> rent, <span class="dt">col =</span> <span class="st">&#39;lightblue&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Alguns comentários: - O valor do aluguel parece aumentar conforme a área do imóvel. Além disso, observa-se também que a variação dos preços de aluguel aumenta conforme a área.</p>
+<ul>
+<li><p>Com relação ao ano de construção, não parece haver uma alteração, em termos de valor mediano, até o ano de 1960. A partir de então nota-se um ligeiro aumento.</p></li>
+<li><p>Imóveis com aquecimento central (H=0) apresentam maior mediana para os preços de aluguel em relação aos que não tem (H=1). A distribuição dos valores de aluguel, em ambos os grupos, apresenta assimetria (á direita). Além disso, a variação é maior no grupo com maior mediana.</p></li>
+<li><p>Finalmente, os preços de aluguel apresentam maior mediana para a região “acima da média”, seguida pelas regiões “na média” e “abaixo da média”. Nota-se, novamente, assimetria nas distribuições dos preços de aluguel em cada grupo e variância não constante.</p></li>
+</ul>
+</div>
+<div id="modelo-1-modelo-linear" class="section level4">
+<h4>Modelo 1: Modelo Linear</h4>
+<p>Todos os modelos serão ajustados usando a função gamlss da biblioteca gamlss. Antes de mais nada, vamos consultar sua documentação.</p>
+<p>Para ajustar o modelo de regressão linear, precisamos especificar a família normal (NO).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>mod1 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span>Fl <span class="op">+</span><span class="st"> </span>A <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc, <span class="dt">family =</span> NO, <span class="dt">data =</span> rent)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 28159 
+## GAMLSS-RS iteration 2: Global Deviance = 28159</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">coef</span>(mod1)</span></code></pre></div>
+<pre><code>##  (Intercept)           Fl            A           H1         loc2 
+## -2775.038803     8.839445     1.480755  -204.759562   134.052349 
+##         loc3 
+##   209.581472</code></pre>
+<p><strong>Mesmo modelo usando função lm</strong></p>
+<p>Se ajustássemos usando a função lm…</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>mod1_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(R <span class="op">~</span><span class="st"> </span>Fl <span class="op">+</span><span class="st"> </span>A <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc, <span class="dt">data =</span> rent)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">coef</span>(mod1_<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##  (Intercept)           Fl            A           H1         loc2 
+## -2775.038803     8.839445     1.480755  -204.759562   134.052349 
+##         loc3 
+##   209.581472</code></pre>
+<p>os resultados seriam os mesmos.</p>
+<p>Vamos avaliar o resumo do ajuste e alguns gráficos para os resíduos. Uma observação importante: o pacote gamlss utiliza, como padrão, os resíduos quantílicos aleatorizados, que t~em distribuição normal sob a suposição de que o modelo ajustado é correto.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">summary</span>(mod1)</span></code></pre></div>
+<pre><code>## ******************************************************************
+## Family:  c(&quot;NO&quot;, &quot;Normal&quot;) 
+## 
+## Call:  gamlss(formula = R ~ Fl + A + H + loc, family = NO,  
+##     data = rent) 
+## 
+## Fitting method: RS() 
+## 
+## ------------------------------------------------------------------
+## Mu link function:  identity
+## Mu Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -2775.0388   470.1352  -5.903 4.20e-09 ***
+## Fl              8.8394     0.3370  26.228  &lt; 2e-16 ***
+## A               1.4808     0.2385   6.208 6.55e-10 ***
+## H1           -204.7596    18.9858 -10.785  &lt; 2e-16 ***
+## loc2          134.0523    25.1430   5.332 1.09e-07 ***
+## loc3          209.5815    27.1286   7.725 1.76e-14 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## Sigma link function:  log
+## Sigma Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  5.73165    0.01594   359.7   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## No. of observations in the fit:  1969 
+## Degrees of Freedom for the fit:  7
+##       Residual Deg. of Freedom:  1962 
+##                       at cycle:  2 
+##  
+## Global Deviance:     28159 
+##             AIC:     28173 
+##             SBC:     28212.1 
+## ******************************************************************</code></pre>
+<p>Perceba que no summary aparece a estimativa de <span class="math inline">\(\sigma\)</span> como 5.73, esse valor é o <span class="math inline">\(log\)</span> de <span class="math inline">\(\sigma\)</span>, para achar seu valor real, apenas é feito a exponenciação. <span class="math inline">\(e^{5.73} = 308\)</span></p>
+<p>Segundo o modelo ajustado, as quatro variáveis apresentam efeito significativo no preço de aluguel.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">plot</span>(mod1)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre><code>## ******************************************************************
+##        Summary of the Quantile Residuals
+##                            mean   =  4.959554e-13 
+##                        variance   =  1.000508 
+##                coef. of skewness  =  0.7470097 
+##                coef. of kurtosis  =  4.844416 
+## Filliben correlation coefficient  =  0.9859819 
+## ******************************************************************</code></pre>
+<p>Claramente o modelo não ajusta bem os dados.</p>
+<p>No gráfico do canto superior esquerdo fica evidente que os resíduos não tem dispersão constante, de forma que a variância aumenta conforme a média.</p>
+<p>Podemos observar também, pelos quatro gráficos, que os resíduos têm distribuição assimétrica.</p>
+<p>O gráfico quantil-quantil normal deixa nítido que os resíduos não apresentam distribuição normal.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">fitted</span>(mod1, <span class="dt">what =</span> <span class="st">&#39;sigma&#39;</span>)[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>##        1 
+## 308.4768</code></pre>
+<p>Estimativa do desvio padrão, assumido constante a todas as observações.</p>
+<p>Vamos plotar os resíduos versus a idade do imóvel, com o objetivo de identificar alguma relação não explicada pelo modelo.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">plot</span>(rent<span class="op">$</span>A, <span class="kw">resid</span>(mod1))</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="kw">lines</span>(<span class="kw">lowess</span>(<span class="kw">resid</span>(mod1) <span class="op">~</span><span class="st"> </span>rent<span class="op">$</span>A), <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Podemos notar que os resíduos aumentam (em média) a partir de 1960. O termo linear, considerado no ajuste do modelo, parece não ser suficiente para explicar a relação entre os preços de aluguel e o ano de construção do imóvel.</p>
+</div>
+<div id="modelo-2-modelo-linear-generalizado" class="section level4">
+<h4>Modelo 2: Modelo Linear Generalizado</h4>
+<p>Ajuste de um modelo linear generalizado com resposta gamma.</p>
+<p>O objetivo aqui é acomodar a assimetria nos dados e variância não constante no ajuste do modelo.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>mod2 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span>Fl <span class="op">+</span><span class="st"> </span>A <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc, <span class="dt">family =</span> GA, <span class="dt">data =</span> rent)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 27764.59 
+## GAMLSS-RS iteration 2: Global Deviance = 27764.59</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">coef</span>(mod2)</span></code></pre></div>
+<pre><code>## (Intercept)          Fl           A          H1        loc2        loc3 
+##  2.86497701  0.01062319  0.00151005 -0.30007446  0.19076406  0.26408285</code></pre>
+<p>Se ajustássemos usando a função glm (especificando função de ligação log)</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>mod2_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">glm</span>(R <span class="op">~</span><span class="st"> </span>Fl <span class="op">+</span><span class="st"> </span>A <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc, <span class="dt">family =</span> <span class="kw">Gamma</span>(<span class="dt">link =</span> log), <span class="dt">data =</span> rent)</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="kw">coef</span>(mod2_<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##  (Intercept)           Fl            A           H1         loc2 
+##  2.864943806  0.010623194  0.001510066 -0.300074001  0.190764594 
+##         loc3 
+##  0.264083376</code></pre>
+<p>os resultados seriam idênticos.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">GAIC</span>(mod1, mod2, <span class="dt">k =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##      df      AIC
+## mod2  7 27778.59
+## mod1  7 28173.00</code></pre>
+<p>O modelo 2 (resposta gamma) proporciona melhor ajuste aos dados (menor AIC) que o modelo 1.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">summary</span>(mod2)</span></code></pre></div>
+<pre><code>## ******************************************************************
+## Family:  c(&quot;GA&quot;, &quot;Gamma&quot;) 
+## 
+## Call:  gamlss(formula = R ~ Fl + A + H + loc, family = GA,  
+##     data = rent) 
+## 
+## Fitting method: RS() 
+## 
+## ------------------------------------------------------------------
+## Mu link function:  log
+## Mu Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  2.8649770  0.5681289   5.043 5.01e-07 ***
+## Fl           0.0106232  0.0004128  25.735  &lt; 2e-16 ***
+## A            0.0015100  0.0002886   5.232 1.85e-07 ***
+## H1          -0.3000745  0.0231153 -12.982  &lt; 2e-16 ***
+## loc2         0.1907641  0.0305203   6.250 5.01e-10 ***
+## loc3         0.2640828  0.0329197   8.022 1.77e-15 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## Sigma link function:  log
+## Sigma Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -0.98220    0.01558  -63.05   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## No. of observations in the fit:  1969 
+## Degrees of Freedom for the fit:  7
+##       Residual Deg. of Freedom:  1962 
+##                       at cycle:  2 
+##  
+## Global Deviance:     27764.59 
+##             AIC:     27778.59 
+##             SBC:     27817.69 
+## ******************************************************************</code></pre>
+<p>Novamente, as quatro variáveis apresentam efeito significativo na resposta.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">plot</span>(mod2)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<pre><code>## ******************************************************************
+##        Summary of the Quantile Residuals
+##                            mean   =  0.0004795675 
+##                        variance   =  1.000657 
+##                coef. of skewness  =  -0.1079453 
+##                coef. of kurtosis  =  3.255464 
+## Filliben correlation coefficient  =  0.9990857 
+## ******************************************************************</code></pre>
+<p>Os resíduos para o modelo com resposta gamma apresentam comportamento bem mais satisfatório do que para o modelo com resposta normal. Não se tem mais um padrão de variância não constante, e percebe-se boa aderência à distribuição normal. De qualquer forma, vamos avançar no ajuste e avaliação de outros modelos.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">fitted</span>(mod2, <span class="dt">what =</span> <span class="st">&#39;sigma&#39;</span>)[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>##         1 
+## 0.3744867</code></pre>
+<p>Estimativa do parâmetro de escala.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="kw">wp</span>(mod2, <span class="dt">ylim.all =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="modelo-3-modelo-generalizado-aditivo-gam" class="section level4">
+<h4>Modelo 3 : Modelo Generalizado Aditivo (GAM)</h4>
+<p>Ajuste de um modelo linear generalizado com resposta gamma e funções suaves para as variáveis numéricas (Fl e A).</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>mod3 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc, <span class="dt">family =</span> GA, <span class="dt">data =</span> rent)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 27683.22 
+## GAMLSS-RS iteration 2: Global Deviance = 27683.22 
+## GAMLSS-RS iteration 3: Global Deviance = 27683.22</code></pre>
+<p>A função pb() é a implementação do suavizador P-splines no gamlss.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="kw">GAIC</span>(mod2, mod3, <span class="dt">k =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##            df      AIC
+## mod3 11.21547 27705.65
+## mod2  7.00000 27778.59</code></pre>
+<p>O modelo com termos suaves produziu menor AIC do que o glm ajustado anteriormente, produzindo, portanto, melhor ajuste.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">summary</span>(mod3)</span></code></pre></div>
+<pre><code>## ******************************************************************
+## Family:  c(&quot;GA&quot;, &quot;Gamma&quot;) 
+## 
+## Call:  gamlss(formula = R ~ pb(Fl) + pb(A) + H + loc, family = GA,  
+##     data = rent) 
+## 
+## Fitting method: RS() 
+## 
+## ------------------------------------------------------------------
+## Mu link function:  log
+## Mu Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  3.0851197  0.5692315   5.420 6.70e-08 ***
+## pb(Fl)       0.0103084  0.0004031  25.573  &lt; 2e-16 ***
+## pb(A)        0.0014062  0.0002893   4.861 1.26e-06 ***
+## H1          -0.3008111  0.0225869 -13.318  &lt; 2e-16 ***
+## loc2         0.1886692  0.0299295   6.304 3.58e-10 ***
+## loc3         0.2719856  0.0322862   8.424  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## Sigma link function:  log
+## Sigma Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -1.00196    0.01559  -64.27   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## NOTE: Additive smoothing terms exist in the formulas: 
+##  i) Std. Error for smoothers are for the linear effect only. 
+## ii) Std. Error for the linear terms maybe are not accurate. 
+## ------------------------------------------------------------------
+## No. of observations in the fit:  1969 
+## Degrees of Freedom for the fit:  11.21547
+##       Residual Deg. of Freedom:  1957.785 
+##                       at cycle:  3 
+##  
+## Global Deviance:     27683.22 
+##             AIC:     27705.65 
+##             SBC:     27768.29 
+## ******************************************************************</code></pre>
+<p>Os coeficientes para Fl e A referem-se apenas à parte linear dos efeitos dessas variáveis. Para testar suas significâncias, considerando também a parte não linear, podemos usar a função drop1().</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">drop1</span>(mod3)</span></code></pre></div>
+<pre><code>## Single term deletions for
+## mu
+## 
+## Model:
+## R ~ pb(Fl) + pb(A) + H + loc
+##            Df   AIC    LRT   Pr(Chi)    
+## &lt;none&gt;        27706                     
+## pb(Fl) 1.4680 28261 558.59 &lt; 2.2e-16 ***
+## pb(A)  4.3149 27798 101.14 &lt; 2.2e-16 ***
+## H      1.8445 27862 160.39 &lt; 2.2e-16 ***
+## loc    2.0346 27770  68.02 1.825e-15 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>A forma apropriada de avaliar o efeito das variáveis ao usar suavizadores não paramétricos é por meio de gráficos de efeitos.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="kw">term.plot</span>(mod3, <span class="dt">pages =</span> <span class="dv">1</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>O eixo vertical representa a média na escala do preditor (log(<span class="math inline">\(\mu\)</span>)). Podemos observar relação praticamente linear com Fl, mas não linear conforme A (praticamente constante até 1960, crescente a partir de então).</p>
+<p>Vamos ajustar um modelo alternativo com suavização apenas para o ano de construção do imóvel.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>mod3_alt &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span>Fl <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc, <span class="dt">family =</span> GA, <span class="dt">data =</span> rent)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 27685.95 
+## GAMLSS-RS iteration 2: Global Deviance = 27685.95 
+## GAMLSS-RS iteration 3: Global Deviance = 27685.95</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="kw">GAIC</span>(mod2, mod3, mod3_alt, <span class="dt">k =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##                df      AIC
+## mod3     11.21547 27705.65
+## mod3_alt 10.33886 27706.63
+## mod2      7.00000 27778.59</code></pre>
+<p>O AIC ainda é menor para o modelo em que funções suavizadoras são incorporadas para ambas as variáveis, mas a diferença diminuiu consideravelmente, em relação ao modelo sem termos não paramétricos (mod2). As áreas sombreadas correspondem a intervalos de confiança 95%.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="kw">plot</span>(mod3)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<pre><code>## ******************************************************************
+##        Summary of the Quantile Residuals
+##                            mean   =  0.0005312226 
+##                        variance   =  1.00067 
+##                coef. of skewness  =  -0.1235641 
+##                coef. of kurtosis  =  3.322109 
+## Filliben correlation coefficient  =  0.9989678 
+## ******************************************************************</code></pre>
+<p>Um gráfico útil para checar a dequação do ajuste é o worm plot. O worm plot é uma alternativa ao qqplot. O padrão, para o caso em que o modelo está bem ajustado, é os pontos dispersos em torno da linha horizontal, com 95% deles internos as linhas (bandas) tracejadas.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="kw">wp</span>(mod3, <span class="dt">ylim.all =</span> <span class="fl">0.6</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p>Podemos observar que os pontos não estão dispersos conforme o esperado, com acentuada curvatura na parte esquerda do gráfico.</p>
+</div>
+<div id="modelo-4-modelo-generalizado-aditivo-duplo-gamma" class="section level4">
+<h4>Modelo 4: Modelo Generalizado Aditivo Duplo Gamma</h4>
+<p>Ajuste de um modelo linear generalizado com funções suaves para as variáveis numéricas (Fl e A) e inclusão de covariáveis para o parâmetro de dispersão.</p>
+<p>Vamos testar duas distribuições: gamma e normal inversa. Primeiro a distribuição Gamma.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>mod4 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc,</span>
+<span id="cb47-2"><a href="#cb47-2"></a>               <span class="dt">sigma.fo =</span><span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc, <span class="dt">family =</span> GA, <span class="dt">data =</span> rent)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 27572.14 
+## GAMLSS-RS iteration 2: Global Deviance = 27570.29 
+## GAMLSS-RS iteration 3: Global Deviance = 27570.28 
+## GAMLSS-RS iteration 4: Global Deviance = 27570.28</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="kw">coef</span>(mod4)</span></code></pre></div>
+<pre><code>##  (Intercept)       pb(Fl)        pb(A)           H1         loc2 
+##  2.884457086  0.010540239  0.001497742 -0.291892320  0.193868835 
+##         loc3 
+##  0.273432597</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="kw">term.plot</span>(mod4, <span class="dt">pages =</span> <span class="dv">1</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>, <span class="dt">what =</span> <span class="st">&#39;mu&#39;</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>Gráfico de efeitos para a média (parâmetro de locação). Percebe-se efeito aproximadamente linear, na escala do preditor, para Fl. Para H, verificamos efeito aproximadamente constante até 1960, com elevação partir de então.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="kw">term.plot</span>(mod4, <span class="dt">pages =</span> <span class="dv">1</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>, <span class="dt">what =</span> <span class="st">&#39;sigma&#39;</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Gráfico de efeitos para o parâmetro de escala (dispersão). Observa-se efeito claramente não linear de Fl e A na dispersão. Além disso, maior efeito é verificado para casas com localização 1, seguida pelas localizações II e III.</p>
+</div>
+<div id="modelo-5-modelo-generalizado-aditivo-duplo-normal-inversa" class="section level4">
+<h4>Modelo 5: Modelo Generalizado Aditivo Duplo Normal Inversa</h4>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>mod5 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc,</span>
+<span id="cb53-2"><a href="#cb53-2"></a>               <span class="dt">sigma.fo =</span><span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc,</span>
+<span id="cb53-3"><a href="#cb53-3"></a>                <span class="dt">family =</span> IG, <span class="dt">data =</span> rent)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 27675.74 
+## GAMLSS-RS iteration 2: Global Deviance = 27672.97 
+## GAMLSS-RS iteration 3: Global Deviance = 27673 
+## GAMLSS-RS iteration 4: Global Deviance = 27673.01 
+## GAMLSS-RS iteration 5: Global Deviance = 27673.01 
+## GAMLSS-RS iteration 6: Global Deviance = 27673.02</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="kw">coef</span>(mod5)</span></code></pre></div>
+<pre><code>##  (Intercept)       pb(Fl)        pb(A)           H1         loc2 
+##  3.120747376  0.010644097  0.001370653 -0.289891877  0.195197343 
+##         loc3 
+##  0.274238647</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="kw">term.plot</span>(mod5, <span class="dt">pages =</span> <span class="dv">1</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>, <span class="dt">what =</span> <span class="st">&#39;mu&#39;</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p>Gráfico de efeitos para a média (parâmetro de locação).</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="kw">term.plot</span>(mod5, <span class="dt">pages =</span> <span class="dv">1</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>, <span class="dt">what =</span> <span class="st">&#39;sigma&#39;</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p>Gráfico de efeitos para o parâmetro de escala (dispersão).</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="kw">GAIC</span>(mod3, mod4, mod5, <span class="dt">k =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##            df      AIC
+## mod4 22.25035 27614.78
+## mod3 11.21547 27705.65
+## mod5 21.82318 27716.66</code></pre>
+<p>O modelo mod4 produziu melhor ajuste (menor valor de AIC). Mod 4 é o modelo com resposta gamma, função suave para Fl e A e modelagem do parâmetro de dispersão.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="kw">drop1</span>(mod4, <span class="dt">what =</span> <span class="st">&#39;sigma&#39;</span>)</span></code></pre></div>
+<pre><code>## Single term deletions for
+## sigma
+## 
+## Model:
+## ~pb(Fl) + pb(A) + H + loc
+##             Df   AIC    LRT   Pr(Chi)    
+## &lt;none&gt;         27615                     
+## pb(Fl) 4.02694 27631 24.683 5.997e-05 ***
+## pb(A)  3.87807 27659 52.167 1.067e-10 ***
+## H      0.88335 27615  1.866   0.14788    
+## loc    2.03694 27619  8.036   0.01872 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Todas as covariáveis, exceto H, apresentam efeito significativo no parâmetro de dispersão. Vamos atualizar o modelo, excluindo o efeito não significativo.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>mod4_alt &lt;-<span class="st"> </span><span class="kw">update</span>(mod4, <span class="op">~</span>.<span class="op">-</span>H, <span class="dt">what =</span> <span class="st">&#39;sigma&#39;</span>)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 27574.12 
+## GAMLSS-RS iteration 2: Global Deviance = 27572.16 
+## GAMLSS-RS iteration 3: Global Deviance = 27572.15 
+## GAMLSS-RS iteration 4: Global Deviance = 27572.15 
+## GAMLSS-RS iteration 5: Global Deviance = 27572.15</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="kw">term.plot</span>(mod4_alt, <span class="dt">pages =</span> <span class="dv">1</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>, <span class="dt">what =</span> <span class="st">&#39;sigma&#39;</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p>Vamos usar o worm plot para diagnóstico do ajuste.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="kw">wp</span>(mod4_alt, <span class="dt">ylim.all =</span> <span class="fl">0.6</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p>O gráfico não reflete um ajuste satisfatório, com padrão na forma de U invertido.</p>
+</div>
+<div id="modelo-6-e-7-modelo-generalizado-aditivo-para-locação-escala-e-forma" class="section level4">
+<h4>Modelo 6 e 7 : Modelo Generalizado aditivo para locação, escala e forma</h4>
+<p>Ajuste de um modelo generalizado aditivo para locação, escala e forma com resposta Box-Cox Cole and Green.</p>
+<p>A família gamlss compreende diversas distribuições, com até quatro parâmetros, que permitem modelar dados com diferentes níveis de dispersão, assimetria e curtose. Nesta aplicação vamos considerar a distribuição Box-Cox Cole and Green (BCCGo).</p>
+<p>Vamos considerar a distribuição BCCGo com parâmetros <span class="math inline">\(\mu\)</span> = 1, sigma = 0.1, <span class="math inline">\(\nu\)</span> = 2.5.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="kw">dBCCGo</span>(<span class="dt">x =</span> <span class="fl">1.2</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>) <span class="co">### f(1.2)</span></span></code></pre></div>
+<pre><code>## [1] 0.3640937</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="kw">pBCCGo</span>(<span class="dt">q =</span> <span class="fl">1.2</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>) <span class="co">### F(1.2) = P(X &lt;= 1.2).</span></span></code></pre></div>
+<pre><code>## [1] 0.9895491</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="kw">qBCCGo</span>(<span class="dt">p =</span> <span class="fl">0.7</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>) <span class="co">### q: F(q)  = P(X &lt;= q) = 0.7.</span></span></code></pre></div>
+<pre><code>## [1] 1.050513</code></pre>
+<p>Vamos simular 100 valores aleatórios da distribuição Box-Cox Cole and Green, plotar o histograma dos valores simulados e sobrepor a curva da função densidade de probabilidade do modelo usado na simulação.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="kw">set.seed</span>(<span class="dv">87</span>) <span class="co">### Fixando a semente.</span></span>
+<span id="cb73-2"><a href="#cb73-2"></a>x &lt;-<span class="st"> </span><span class="kw">rBCCGo</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>) <span class="co">### Gerando 100 valores aleatórios.</span></span>
+<span id="cb73-3"><a href="#cb73-3"></a><span class="kw">hist</span>(x, <span class="dt">probability =</span> <span class="ot">TRUE</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">4.5</span>))</span>
+<span id="cb73-4"><a href="#cb73-4"></a><span class="kw">curve</span>(<span class="kw">dBCCGo</span>(x, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>), <span class="dt">from =</span> <span class="fl">0.6</span>, <span class="dt">to =</span> <span class="fl">1.3</span>, </span>
+<span id="cb73-5"><a href="#cb73-5"></a>      <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="kw">gamlss.demo</span>() <span class="co">### Alguma demos.</span></span></code></pre></div>
+<pre><code>## &lt;Tcl&gt;</code></pre>
+<p>Voltemos à análise dos dados dos preços de aluguel de imóveis. Vamos ajustar dois modelos: o primeiro (mod6) não incluindo covariáveis na modelagem do parâmetro de forma (<span class="math inline">\(\nu\)</span>). No segundo (mod7) as mesmas covariáveis usadas para modelar <span class="math inline">\(\mu\)</span> são usadas também para <span class="math inline">\(\nu\)</span>.</p>
+<div id="modelos-6-e-7" class="section level5">
+<h5>Modelos 6 e 7</h5>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a>mod6 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc,</span>
+<span id="cb76-2"><a href="#cb76-2"></a>               <span class="dt">sigma.fo =</span><span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>loc, <span class="dt">family =</span> BCCGo, <span class="dt">data =</span> rent)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 27631.55 
+## GAMLSS-RS iteration 2: Global Deviance = 27570.62 
+## GAMLSS-RS iteration 3: Global Deviance = 27568.35 
+## GAMLSS-RS iteration 4: Global Deviance = 27568.18 
+## GAMLSS-RS iteration 5: Global Deviance = 27568.16 
+## GAMLSS-RS iteration 6: Global Deviance = 27568.15 
+## GAMLSS-RS iteration 7: Global Deviance = 27568.15</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a>mod7 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc,</span>
+<span id="cb78-2"><a href="#cb78-2"></a>               <span class="dt">sigma.fo =</span><span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>loc, </span>
+<span id="cb78-3"><a href="#cb78-3"></a>               <span class="dt">nu.fo =</span><span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc, <span class="dt">family =</span> BCCGo, <span class="dt">data =</span> rent)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 27621.52 
+## GAMLSS-RS iteration 2: Global Deviance = 27556.69 
+## GAMLSS-RS iteration 3: Global Deviance = 27554.43 
+## GAMLSS-RS iteration 4: Global Deviance = 27554.28 
+## GAMLSS-RS iteration 5: Global Deviance = 27554.27 
+## GAMLSS-RS iteration 6: Global Deviance = 27554.27 
+## GAMLSS-RS iteration 7: Global Deviance = 27554.27</code></pre>
+<p>Vamos comparar os ajustes usando o AIC.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a><span class="kw">GAIC</span>(mod4, mod6, mod7, <span class="dt">k =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##            df      AIC
+## mod7 27.46932 27609.21
+## mod6 21.57556 27611.30
+## mod4 22.25035 27614.78</code></pre>
+<p>O modelo mod7 produziu menor valor de AIC, indicando, portanto, melhor ajuste. Nesse caso, além de locação e escala, também a forma da distribuição varia conforme os valores das covariáveis.</p>
+<p>Vamos avaliar possível retirada dos termos no preditor do parâmetro de forma em mod7.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="kw">drop1</span>(mod7, <span class="dt">what =</span> <span class="st">&#39;nu&#39;</span>) <span class="co">### Leva tempo...</span></span></code></pre></div>
+<pre><code>## Single term deletions for
+## nu
+## 
+## Model:
+## ~pb(Fl) + pb(A) + H + loc
+##            Df   AIC    LRT Pr(Chi)  
+## &lt;none&gt;        27609                 
+## pb(Fl) 1.0214 27607 0.2000  0.6635  
+## pb(A)  1.7371 27609 3.5228  0.1383  
+## H      1.1896 27612 5.0545  0.0325 *
+## loc    1.8571 27606 0.7560  0.6503  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>para o parâmetro de forma, apenas H resultou em efeito significativo. Vamos ajustar novo modelo, extraindo os demais efeitos do preditor.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>mod7_alt &lt;-<span class="st"> </span><span class="kw">update</span>(mod7, <span class="op">~</span>H, <span class="dt">what =</span> <span class="st">&#39;nu&#39;</span>)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 27625.99 
+## GAMLSS-RS iteration 2: Global Deviance = 27561.56 
+## GAMLSS-RS iteration 3: Global Deviance = 27559.22 
+## GAMLSS-RS iteration 4: Global Deviance = 27559.04 
+## GAMLSS-RS iteration 5: Global Deviance = 27559.01 
+## GAMLSS-RS iteration 6: Global Deviance = 27559.01 
+## GAMLSS-RS iteration 7: Global Deviance = 27559.01</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="kw">GAIC</span>(mod7, mod7_alt, <span class="dt">k =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##                df      AIC
+## mod7_alt 22.87242 27604.75
+## mod7     27.46932 27609.21</code></pre>
+<p>O modelo que contém apenas o efeito de H em <span class="math inline">\(\nu\)</span> produziu ajuste com menor AIC, e é preferível</p>
+<p>Vamos avaliar os gráficos de efeitos.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="kw">term.plot</span>(mod7_alt, <span class="dt">pages =</span> <span class="dv">1</span>, <span class="dt">what =</span> <span class="st">&#39;mu&#39;</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="kw">term.plot</span>(mod7_alt, <span class="dt">pages =</span> <span class="dv">1</span>, <span class="dt">what =</span> <span class="st">&#39;sigma&#39;</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-38-2.png" width="672" /></p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="kw">term.plot</span>(mod7_alt, <span class="dt">pages =</span> <span class="dv">1</span>, <span class="dt">what =</span> <span class="st">&#39;nu&#39;</span>, <span class="dt">ask =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-38-3.png" width="672" /></p>
+<p>Vamos proceder com o diagnóstico do ajuste.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a><span class="kw">plot</span>(mod7_alt)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<pre><code>## ******************************************************************
+##        Summary of the Quantile Residuals
+##                            mean   =  0.004930176 
+##                        variance   =  1.000472 
+##                coef. of skewness  =  -0.02133528 
+##                coef. of kurtosis  =  2.928237 
+## Filliben correlation coefficient  =  0.9997195 
+## ******************************************************************</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="kw">wp</span>(mod7_alt, <span class="dt">ylim.all =</span> <span class="fl">0.6</span>, <span class="dt">main =</span> <span class="st">&#39;mod7_alt&#39;</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-39-2.png" width="672" /> O modelo, aparentemente, se ajusta bem aos dados.</p>
+</div>
+</div>
+<div id="explorar-modelo-ajustado" class="section level4">
+<h4>Explorar modelo ajustado</h4>
+<p>Neste ponto, vamos explorar o modelo ajustado, estimativas e predições. Vamos considerar o último modelo ajustado, mod7_alt.</p>
+<p>Vamos estimar os parâmetros para as distribuições dos preços de aluguel em dois cenários.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a>data_new &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Fl =</span> <span class="kw">c</span>(<span class="dv">52</span>, <span class="dv">82</span>), <span class="dt">A =</span> <span class="kw">c</span>(<span class="dv">1940</span>, <span class="dv">1975</span>), <span class="dt">H =</span> <span class="kw">c</span>(<span class="st">&#39;1&#39;</span>, <span class="st">&#39;0&#39;</span>), <span class="dt">loc =</span> <span class="kw">c</span>(<span class="st">&#39;1&#39;</span>, <span class="st">&#39;3&#39;</span>))</span>
+<span id="cb94-2"><a href="#cb94-2"></a><span class="kw">rownames</span>(data_new) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Imovel 1&#39;</span>, <span class="st">&#39;Imovel 2&#39;</span>)</span></code></pre></div>
+<p>data_new armazena características de dois “perfis” distintos de imóveis.</p>
+<p>Primeiramente, vamos estimar o preço médio de aluguel.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a>pmu &lt;-<span class="st"> </span><span class="kw">predict</span>(mod7_alt, <span class="dt">newdata =</span> data_new, <span class="dt">what =</span> <span class="kw">c</span>(<span class="st">&#39;mu&#39;</span>))</span></code></pre></div>
+<pre><code>## new prediction 
+## New way of prediction in pb()  (starting from GAMLSS version 5.0-3) 
+## New way of prediction in pb()  (starting from GAMLSS version 5.0-3)</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a>pmu</span></code></pre></div>
+<pre><code>## [1] 5.924498 6.998469</code></pre>
+<p>Estimativa na escala do preditor (log(<span class="math inline">\(\mu\)</span>)).</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1"></a>pmu &lt;-<span class="st"> </span><span class="kw">predict</span>(mod7_alt, <span class="dt">newdata =</span> data_new, <span class="dt">what =</span> <span class="kw">c</span>(<span class="st">&#39;mu&#39;</span>), <span class="dt">type =</span> <span class="st">&#39;response&#39;</span>)</span></code></pre></div>
+<pre><code>## new prediction 
+## New way of prediction in pb()  (starting from GAMLSS version 5.0-3) 
+## New way of prediction in pb()  (starting from GAMLSS version 5.0-3)</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1"></a>pmu</span></code></pre></div>
+<pre><code>## [1]  374.0907 1094.9557</code></pre>
+<p>Estimativa na escala do parâmetro (<span class="math inline">\(\mu\)</span>).</p>
+<p>Agora, de maneira semelhante, para os demais parâmetros do modelo. Para o parâmetro de escala (<span class="math inline">\(\sigma\)</span>):</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1"></a>psigma &lt;-<span class="st"> </span><span class="kw">predict</span>(mod7_alt, <span class="dt">newdata =</span> data_new, <span class="dt">what =</span> <span class="kw">c</span>(<span class="st">&#39;sigma&#39;</span>))</span></code></pre></div>
+<pre><code>## new prediction 
+## New way of prediction in pb()  (starting from GAMLSS version 5.0-3) 
+## New way of prediction in pb()  (starting from GAMLSS version 5.0-3)</code></pre>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1"></a>psigma</span></code></pre></div>
+<pre><code>## [1] -0.8182915 -1.2147652</code></pre>
+<p>Estimativa na escala do preditor (log(<span class="math inline">\(\sigma\)</span>)).</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1"></a>psigma &lt;-<span class="st"> </span><span class="kw">predict</span>(mod7_alt, <span class="dt">newdata =</span> data_new, <span class="dt">what =</span> <span class="kw">c</span>(<span class="st">&#39;sigma&#39;</span>), <span class="dt">type =</span> <span class="st">&#39;response&#39;</span>)</span></code></pre></div>
+<pre><code>## new prediction 
+## New way of prediction in pb()  (starting from GAMLSS version 5.0-3) 
+## New way of prediction in pb()  (starting from GAMLSS version 5.0-3)</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1"></a>psigma</span></code></pre></div>
+<pre><code>## [1] 0.4411848 0.2967797</code></pre>
+<p>Estimativa na escala do parâmetro (<span class="math inline">\(\sigma\)</span>).</p>
+<p>Para o parâmetro de forma (<span class="math inline">\(\nu\)</span>):</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1"></a>pnu &lt;-<span class="st"> </span><span class="kw">predict</span>(mod7_alt, <span class="dt">newdata =</span> data_new, <span class="dt">what =</span> <span class="kw">c</span>(<span class="st">&#39;nu&#39;</span>))</span>
+<span id="cb111-2"><a href="#cb111-2"></a>pnu</span></code></pre></div>
+<pre><code>## [1] 0.1789127 0.5028816</code></pre>
+<p>Como a função de ligação é do tipo identidade, a estimativa é a mesma nas escalas do preditor e do parâmetro.</p>
+<p>Vamos plotar as curvas das densidades ajustadas para os dois perfis de imóveis.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1"></a><span class="kw">curve</span>(<span class="kw">dBCCGo</span>(x, <span class="dt">mu =</span> pmu[<span class="dv">1</span>], <span class="dt">sigma =</span> psigma[<span class="dv">1</span>], <span class="dt">nu =</span> pnu[<span class="dv">1</span>]), </span>
+<span id="cb113-2"><a href="#cb113-2"></a>      <span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">3500</span>, <span class="dt">xlab =</span> <span class="st">&#39;Aluguel&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;Densidade&#39;</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb113-3"><a href="#cb113-3"></a><span class="kw">curve</span>(<span class="kw">dBCCGo</span>(x, <span class="dt">mu =</span> pmu[<span class="dv">2</span>], <span class="dt">sigma =</span> psigma[<span class="dv">2</span>], <span class="dt">nu =</span> pnu[<span class="dv">2</span>]), </span>
+<span id="cb113-4"><a href="#cb113-4"></a>      <span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">3500</span>, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb113-5"><a href="#cb113-5"></a><span class="kw">legend</span>(<span class="dt">x =</span> <span class="st">&#39;topright&#39;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&#39;Imovel 1&#39;</span>, <span class="st">&#39;Imovel 2&#39;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&#39;red&#39;</span>, <span class="st">&#39;blue&#39;</span>), <span class="dt">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p>Probabilidade de um imóvel com valor de aluguel inferior a $500 para cada um dos dois perfis.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a><span class="kw">pBCCGo</span>(<span class="dv">500</span>, <span class="dt">mu =</span> pmu[<span class="dv">1</span>], <span class="dt">sigma =</span> psigma[<span class="dv">1</span>], <span class="dt">nu =</span> pnu[<span class="dv">1</span>]) <span class="co">### Perfil 1</span></span></code></pre></div>
+<pre><code>## [1] 0.7501413</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1"></a><span class="kw">pBCCGo</span>(<span class="dv">500</span>, <span class="dt">mu =</span> pmu[<span class="dv">2</span>], <span class="dt">sigma =</span> psigma[<span class="dv">2</span>], <span class="dt">nu =</span> pnu[<span class="dv">2</span>]) <span class="co">### Perfil 2</span></span></code></pre></div>
+<pre><code>## [1] 0.0145249</code></pre>
+<p>Probabilidade de um imóvel com valor de aluguel superior a $1000 para cada um dos dois perfis.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1"></a><span class="kw">pBCCGo</span>(<span class="dv">1000</span>, <span class="dt">mu =</span> pmu[<span class="dv">1</span>], <span class="dt">sigma =</span> psigma[<span class="dv">1</span>], <span class="dt">nu =</span> pnu[<span class="dv">1</span>], <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>) </span></code></pre></div>
+<pre><code>## [1] 0.007410492</code></pre>
+<p>Perfil 1</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a><span class="kw">pBCCGo</span>(<span class="dv">1000</span>, <span class="dt">mu =</span> pmu[<span class="dv">2</span>], <span class="dt">sigma =</span> psigma[<span class="dv">2</span>], <span class="dt">nu =</span> pnu[<span class="dv">2</span>], <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>) </span></code></pre></div>
+<pre><code>## [1] 0.6174512</code></pre>
+<p>Perfil 2</p>
+<p>Estimativas dos preços medianos</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1"></a><span class="kw">qBCCGo</span>(<span class="fl">0.5</span>, <span class="dt">mu =</span> pmu[<span class="dv">1</span>], <span class="dt">sigma =</span> psigma[<span class="dv">1</span>], <span class="dt">nu =</span> pnu[<span class="dv">1</span>]) </span></code></pre></div>
+<pre><code>## [1] 374.0907</code></pre>
+<p>Perfil 1</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1"></a><span class="kw">qBCCGo</span>(<span class="fl">0.5</span>, <span class="dt">mu =</span> pmu[<span class="dv">2</span>], <span class="dt">sigma =</span> psigma[<span class="dv">2</span>], <span class="dt">nu =</span> pnu[<span class="dv">2</span>]) </span></code></pre></div>
+<pre><code>## [1] 1094.956</code></pre>
+<p>Perfil 2</p>
+<p>Estimativas dos quantis 75 e 90%</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1"></a><span class="kw">qBCCGo</span>(<span class="kw">c</span>(<span class="fl">0.75</span>,<span class="fl">0.90</span>), <span class="dt">mu =</span> pmu[<span class="dv">1</span>], <span class="dt">sigma =</span> psigma[<span class="dv">1</span>], <span class="dt">nu =</span> pnu[<span class="dv">1</span>]) </span></code></pre></div>
+<pre><code>## [1] 499.9069 641.0421</code></pre>
+<p>Perfil 1</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1"></a><span class="kw">qBCCGo</span>(<span class="kw">c</span>(<span class="fl">0.75</span>,<span class="fl">0.90</span>), <span class="dt">mu =</span> pmu[<span class="dv">2</span>], <span class="dt">sigma =</span> psigma[<span class="dv">2</span>], <span class="dt">nu =</span> pnu[<span class="dv">2</span>])</span></code></pre></div>
+<pre><code>## [1] 1325.040 1550.752</code></pre>
+<p>Perfil 2</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

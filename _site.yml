@@ -1,9 +1,21 @@
-name: "my-website"
+name: "GAMLSS"
 output_dir: "docs"
+output:
+  html_document:
+    theme: flatly
+    highlight: pygments
 navbar:
-  title: "My Website"
+  title: "GAMLSS"
   left:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
+    - text: "Módulos"
+      menu:
+      - text: "Módulo 1 - introdução"
+      - text: "Resumo"
+        href: Caderno.html
+      - text: "Conteúdo"
+        href: exemplo_inicial.html
+        
+        
+        
