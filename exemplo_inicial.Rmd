@@ -21,16 +21,16 @@ knitr::opts_chunk$set(echo = TRUE, message = F, warning = F,
 Este exemplo tem por objetivo motivar o uso de GAMLSS e apresentar alguns recursos implementados no pacote gamlss.
 
 ```{r}
-require(gamlss) ### Carregando o pacote gamlss.
+require(gamlss) # Carregando o pacote gamlss.
 require(gamlss.demo)
 options(device = 'x11')
-data(rent) ### Dados sobre aluguéis de imóveis em Munique, 1980.
+data(rent) # Dados sobre aluguéis de imóveis em Munique, 1980.
 ```
 
 
 Vamos considerar para a análise o valor do aluguel dos imóveis (R)além de quatro covariáveis: Fl, A, H e loc. 
 
-#### Análise exploratória
+## Análise exploratória
 
 Inicialmente, vamos construir alguns gráficos para explorar as relações entre as variáveis.
 
@@ -62,7 +62,7 @@ aumento.
  Nota-se, novamente, assimetria nas distribuições dos preços de aluguel
  em cada grupo e variância não constante.
 
-#### Modelo 1: Modelo Linear
+## Modelo 1: Modelo Linear
 
 Todos os modelos serão ajustados usando a função gamlss da biblioteca
 gamlss. Antes de mais nada, vamos consultar sua documentação.
@@ -136,7 +136,7 @@ O termo linear, considerado no ajuste do modelo, parece não ser suficiente
 para explicar a relação entre os preços de aluguel e o ano de construção
 do imóvel.
 
-#### Modelo 2: Modelo Linear Generalizado
+## Modelo 2: Modelo Linear Generalizado
 
 Ajuste de um modelo linear generalizado com resposta gamma.
 
@@ -188,7 +188,7 @@ Estimativa do parâmetro de escala.
 wp(mod2, ylim.all = 0.8)
 ```
 
-#### Modelo 3 : Modelo Generalizado Aditivo (GAM)
+## Modelo 3 : Modelo Generalizado Aditivo (GAM)
 
 Ajuste de um modelo linear generalizado com resposta gamma e funções suaves para as variáveis numéricas (Fl e A).
 
@@ -259,7 +259,7 @@ wp(mod3, ylim.all = 0.6)
 Podemos observar que os pontos não estão dispersos conforme o esperado,
 com acentuada curvatura na parte esquerda do gráfico.
 
-#### Modelo 4: Modelo Generalizado Aditivo Duplo Gamma
+## Modelo 4: Modelo Generalizado Aditivo Duplo Gamma
 
 Ajuste de um modelo linear generalizado com  funções suaves 
 para as variáveis numéricas (Fl e A) e inclusão de covariáveis para
@@ -288,7 +288,7 @@ efeito claramente não linear de Fl e A na dispersão. Além disso, maior
 efeito é verificado para casas com localização 1, seguida pelas localizações
 II e III.
 
-#### Modelo 5: Modelo Generalizado Aditivo Duplo Normal Inversa
+## Modelo 5: Modelo Generalizado Aditivo Duplo Normal Inversa
 
 ```{r}
 mod5 <- gamlss(R ~ pb(Fl) + pb(A) + H + loc,
@@ -337,7 +337,7 @@ wp(mod4_alt, ylim.all = 0.6)
 O gráfico não reflete um ajuste satisfatório, com padrão na forma
 de U invertido.
 
-#### Modelo 6 e 7 : Modelo Generalizado aditivo para locação, escala e forma
+## Modelo 6 e 7 : Modelo Generalizado aditivo para locação, escala e forma
 
 Ajuste de um modelo generalizado aditivo para locação, escala
 e forma com resposta Box-Cox Cole and Green.
@@ -349,9 +349,9 @@ Box-Cox Cole and Green (BCCGo).
 
 Vamos considerar a distribuição BCCGo com parâmetros $\mu$ = 1, sigma = 0.1, $\nu$ = 2.5.
 ```{r}
-dBCCGo(x = 1.2, mu = 1, sigma = 0.1, nu = 2.5) ### f(1.2)
-pBCCGo(q = 1.2, mu = 1, sigma = 0.1, nu = 2.5) ### F(1.2) = P(X <= 1.2).
-qBCCGo(p = 0.7, mu = 1, sigma = 0.1, nu = 2.5) ### q: F(q)  = P(X <= q) = 0.7.
+dBCCGo(x = 1.2, mu = 1, sigma = 0.1, nu = 2.5) # f(1.2)
+pBCCGo(q = 1.2, mu = 1, sigma = 0.1, nu = 2.5) # F(1.2) = P(X <= 1.2).
+qBCCGo(p = 0.7, mu = 1, sigma = 0.1, nu = 2.5) # q: F(q)  = P(X <= q) = 0.7.
 ```
 
 
@@ -360,13 +360,13 @@ plotar o histograma dos valores simulados e sobrepor a curva da função
 densidade de probabilidade do modelo usado na simulação.
 
 ```{r}
-set.seed(87) ### Fixando a semente.
-x <- rBCCGo(n = 100, mu = 1, sigma = 0.1, nu = 2.5) ### Gerando 100 valores aleatórios.
+set.seed(87) # Fixando a semente.
+x <- rBCCGo(n = 100, mu = 1, sigma = 0.1, nu = 2.5) # Gerando 100 valores aleatórios.
 hist(x, probability = TRUE, ylim = c(0,4.5))
 curve(dBCCGo(x, mu = 1, sigma = 0.1, nu = 2.5), from = 0.6, to = 1.3, 
       add = TRUE, col = 'red', lwd = 2)
 
-gamlss.demo() ### Alguma demos.
+gamlss.demo() # Alguma demos.
 ```
 
 
@@ -375,7 +375,7 @@ ajustar dois modelos: o primeiro (mod6) não incluindo covariáveis na
 modelagem do parâmetro de forma ($\nu$). No segundo (mod7) as mesmas covariáveis
 usadas para modelar $\mu$ são usadas também para $\nu$.
 
-##### Modelos 6 e 7
+## Modelos 6 e 7
 ```{r}
 mod6 <- gamlss(R ~ pb(Fl) + pb(A) + H + loc,
                sigma.fo =~ pb(Fl) + pb(A) + loc, family = BCCGo, data = rent)
@@ -400,7 +400,7 @@ Vamos avaliar possível retirada dos termos no preditor do parâmetro de
 forma em mod7.
 
 ```{r}
-drop1(mod7, what = 'nu') ### Leva tempo...
+drop1(mod7, what = 'nu') # Leva tempo...
 ```
 
 para o parâmetro de forma, apenas H resultou em efeito significativo.
@@ -430,7 +430,7 @@ wp(mod7_alt, ylim.all = 0.6, main = 'mod7_alt')
 ```
 O modelo, aparentemente, se ajusta bem aos dados.
 
-#### Explorar modelo ajustado
+## Explorar modelo ajustado
 
 Neste ponto, vamos explorar o modelo ajustado, estimativas e predições.
 Vamos considerar o último modelo ajustado, mod7_alt.
@@ -499,8 +499,8 @@ legend(x = 'topright', legend = c('Imovel 1', 'Imovel 2'), col = c('red', 'blue'
 Probabilidade de um imóvel com valor de aluguel inferior a $500 para
 cada um dos dois perfis.
 ```{r}
-pBCCGo(500, mu = pmu[1], sigma = psigma[1], nu = pnu[1]) ### Perfil 1
-pBCCGo(500, mu = pmu[2], sigma = psigma[2], nu = pnu[2]) ### Perfil 2
+pBCCGo(500, mu = pmu[1], sigma = psigma[1], nu = pnu[1]) # Perfil 1
+pBCCGo(500, mu = pmu[2], sigma = psigma[2], nu = pnu[2]) # Perfil 2
 ```
 
 

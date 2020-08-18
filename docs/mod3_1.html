@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Módulo 3 - parte 1</title>
+
+<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">GAMLSS</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Módulos
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Módulo 1 - introdução</li>
+    <li>
+      <a href="Caderno.html">Resumo</a>
+    </li>
+    <li>
+      <a href="exemplo_inicial.html">Conteúdo</a>
+    </li>
+    <li class="dropdown-header">Módulo 3</li>
+    <li>
+      <a href="mod3_1.html">Módulo 3 - Parte 1</a>
+    </li>
+    <li>
+      <a href="mod3_2.html">Módulo 3 - Parte 1</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Módulo 3 - parte 1</h1>
+
+</div>
+
+
+<div id="pacotes" class="section level3">
+<h3>Pacotes</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">require</span>(gamlss)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">require</span>(gamlss.demo)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">require</span>(gamlss.util)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">require</span>(faraway)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">require</span>(boot)</span></code></pre></div>
+</div>
+<div id="introdução" class="section level3">
+<h3>Introdução</h3>
+<p>Vamos usar a base de dados abdom. O objetivo é modelar a circunferência abdominal em função da idade gestacional. Pelo gráfico, condicional à idade gestacional a circunferência abdominal aparenta ter distribuição simétrica. No entanto, fica evidente que a dispersão não é constante, aumentando conforme a idade gestacional.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">data</span>(abdom)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">par</span>(<span class="dt">cex =</span> <span class="fl">1.25</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">plot</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> abdom, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, </span>
+<span id="cb2-4"><a href="#cb2-4"></a>     <span class="dt">xlab =</span> <span class="st">&#39;Idade gestacional&#39;</span>, </span>
+<span id="cb2-5"><a href="#cb2-5"></a>     <span class="dt">ylab =</span> <span class="st">&#39;Circunferência abdominal&#39;</span>)</span></code></pre></div>
+<p><img src="mod3_1_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="distribuição-normal" class="section level3">
+<h3>Distribuição Normal</h3>
+<p>Vamos começar pelo ajuste de um modelo com resposta normal, inserindo a covariável (idade gestacional) apenas no preditor da média.</p>
+</div>
+<div id="ajuste-1-modelo-normal" class="section level3">
+<h3>Ajuste 1 : Modelo Normal</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>ajusteNO1 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> abdom, <span class="dt">family =</span> NO)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 5002.453 
+## GAMLSS-RS iteration 2: Global Deviance = 5002.453</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">plot</span>(ajusteNO1)</span></code></pre></div>
+<p><img src="mod3_1_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre><code>## ******************************************************************
+##        Summary of the Quantile Residuals
+##                            mean   =  -7.465852e-17 
+##                        variance   =  1.001642 
+##                coef. of skewness  =  -0.1475323 
+##                coef. of kurtosis  =  5.909441 
+## Filliben correlation coefficient  =  0.983555 
+## ******************************************************************</code></pre>
+</div>
+<div id="resíduos-vs.-valores-ajustados" class="section level3">
+<h3>Resíduos vs. valores ajustados</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">plot</span>(<span class="kw">resid</span>(ajusteNO1) <span class="op">~</span><span class="st"> </span><span class="kw">fitted</span>(ajusteNO1), <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">lines</span>(<span class="kw">lowess</span>(<span class="kw">resid</span>(ajusteNO1) <span class="op">~</span><span class="st"> </span><span class="kw">fitted</span>(ajusteNO1)), <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="mod3_1_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="worm-plot" class="section level3">
+<h3>Worm plot</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">wp</span>(ajusteNO1, <span class="dt">cex =</span> <span class="fl">1.25</span>, <span class="dt">ylim.all =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p><img src="mod3_1_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Os resíduos <strong>NÃO</strong> apresentam distribuição normal e não têm variância constante. Além disso, o gráfico de resíduos versus valores ajustados apresenta certa curvatura. Vamos tentar corrigir esses problemas:</p>
+<ul>
+<li><ol style="list-style-type: upper-roman">
+<li>Modelando também o parâmetro de escala (<span class="math inline">\(\sigma\)</span>) em função da covariável.</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: upper-roman">
+<li>Modelando a média da distribuição por meio de um polinômio quadrático.</li>
+</ol></li>
+</ul>
+</div>
+<div id="ajuste-2" class="section level3">
+<h3>Ajuste 2</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>ajusteNO2 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(y <span class="op">~</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="kw">I</span>(x<span class="op">^</span><span class="dv">2</span>), <span class="dt">sigma.formula =</span><span class="op">~</span>x, <span class="dt">data =</span> abdom, <span class="dt">family =</span> NO)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 4793.642 
+## GAMLSS-RS iteration 2: Global Deviance = 4792.823 
+## GAMLSS-RS iteration 3: Global Deviance = 4792.823</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">plot</span>(ajusteNO2)</span></code></pre></div>
+<p><img src="mod3_1_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre><code>## ******************************************************************
+##        Summary of the Quantile Residuals
+##                            mean   =  -0.0001488904 
+##                        variance   =  1.001642 
+##                coef. of skewness  =  0.2447903 
+##                coef. of kurtosis  =  3.635106 
+## Filliben correlation coefficient  =  0.9963117 
+## ******************************************************************</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">wp</span>(ajusteNO2, <span class="dt">cex =</span> <span class="fl">1.25</span>, <span class="dt">ylim.all =</span> <span class="fl">1.2</span>)</span></code></pre></div>
+<p><img src="mod3_1_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<p>Alguns dos problemas diagnosticados no primeiro ajuste foram corrigidos (variância não constante e tendência nos resíduos). No entanto, o worm plot indica que o modelo <strong>ainda apresenta problemas</strong> de ajuste.</p>
+</div>
+<div id="distribuição-power-exponential-pe" class="section level3">
+<h3>Distribuição Power Exponential (PE)</h3>
+<p>O próximo passo é trocar a distribuição. Ao invés da Normal vamos considerar a <strong>Power Exponential (PE)</strong>.</p>
+<p>A distribuição PE tem três parâmetros:<br />
+- <span class="math inline">\(\mu\)</span> é a média<br />
+- <span class="math inline">\(\sigma\)</span> é um parâmetro de escala<br />
+- <span class="math inline">\(\nu\)</span> controla a curtose.</p>
+<p>A distribuição PE tem como casos particulares a distribuição de Laplace (quando <span class="math inline">\(\nu\)</span> = 1), a normal (quando <span class="math inline">\(\nu\)</span> = 2) e a uniforme (quando <span class="math inline">\(\nu\)</span> vai a infinito).</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">demo.PE</span>()</span></code></pre></div>
+<p>Vamos modelar a média (<span class="math inline">\(\mu\)</span>) e a dispersão (<span class="math inline">\(\sigma\)</span>) com base na covariável. Neste primeiro momento, não vamos inserir termos não paramétricos (suavizadores) ao modelo. Vamos analisar o perfil da deviance para <span class="math inline">\(\nu\)</span>. Começamos pelo ajuste de um modelo com resposta normal, para comparação.</p>
+<p>Agora, o ajuste do modelo com resposta PE.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>ajustePE &lt;-<span class="st"> </span><span class="kw">gamlss</span>(y <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(x, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb15-2"><a href="#cb15-2"></a>                   <span class="dt">sigma.formula =</span><span class="op">~</span>x, <span class="dt">data =</span> abdom, <span class="dt">family =</span> PE)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 4797.474 
+## GAMLSS-RS iteration 2: Global Deviance = 4787.289 
+## GAMLSS-RS iteration 3: Global Deviance = 4787.288</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">summary</span>(ajustePE)</span></code></pre></div>
+<pre><code>## ******************************************************************
+## Family:  c(&quot;PE&quot;, &quot;Power Exponential&quot;) 
+## 
+## Call:  gamlss(formula = y ~ poly(x, 2, raw = TRUE), sigma.formula = ~x,  
+##     family = PE, data = abdom) 
+## 
+## Fitting method: RS() 
+## 
+## ------------------------------------------------------------------
+## Mu link function:  identity
+## Mu Coefficients:
+##                          Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)             -97.23838    8.68465 -11.197  &lt; 2e-16 ***
+## poly(x, 2, raw = TRUE)1  13.68755    0.74070  18.479  &lt; 2e-16 ***
+## poly(x, 2, raw = TRUE)2  -0.06065    0.01434  -4.229 2.71e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## Sigma link function:  log
+## Sigma Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 1.378003   0.106881   12.89   &lt;2e-16 ***
+## x           0.041488   0.003728   11.13   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## Nu link function:  log 
+## Nu Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.50002    0.08271   6.045 2.61e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## No. of observations in the fit:  610 
+## Degrees of Freedom for the fit:  6
+##       Residual Deg. of Freedom:  604 
+##                       at cycle:  3 
+##  
+## Global Deviance:     4787.288 
+##             AIC:     4799.288 
+##             SBC:     4825.769 
+## ******************************************************************</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">plot</span>(ajustePE)</span></code></pre></div>
+<p><img src="mod3_1_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre><code>## ******************************************************************
+##        Summary of the Quantile Residuals
+##                            mean   =  0.0107506 
+##                        variance   =  1.0009 
+##                coef. of skewness  =  0.1954367 
+##                coef. of kurtosis  =  3.097244 
+## Filliben correlation coefficient  =  0.9980143 
+## ******************************************************************</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">wp</span>(ajustePE, <span class="dt">cex =</span> <span class="fl">1.25</span>, <span class="dt">ylim.all =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="mod3_1_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+</div>
+<div id="comparação-de-aic" class="section level3">
+<h3>Comparação de AIC</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">GAIC</span>(ajusteNO2, ajustePE, <span class="dt">k =</span> <span class="dv">2</span>) <span class="co"># K = 2 (AIC)</span></span></code></pre></div>
+<pre><code>##           df      AIC
+## ajustePE   6 4799.288
+## ajusteNO2  5 4802.823</code></pre>
+<p>O modelo com resposta PE produz menor AIC. Vamos prosseguir com ele.</p>
+</div>
+<div id="ajuste-de-mu" class="section level3">
+<h3>Ajuste de mu</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">coef</span>(ajustePE)</span></code></pre></div>
+<pre><code>##             (Intercept) poly(x, 2, raw = TRUE)1 poly(x, 2, raw = TRUE)2 
+##            -97.23838356             13.68754934             -0.06064768</code></pre>
+</div>
+<div id="ajuste-de-nu" class="section level3">
+<h3>Ajuste de nu</h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">coef</span>(ajustePE, <span class="dt">parameter =</span> <span class="st">&#39;nu&#39;</span>)</span></code></pre></div>
+<pre><code>## (Intercept) 
+##   0.5000167</code></pre>
+</div>
+<div id="estimativa-de-nu" class="section level3">
+<h3>Estimativa de nu</h3>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">exp</span>(<span class="kw">coef</span>(ajustePE, <span class="dt">parameter =</span> <span class="st">&#39;nu&#39;</span>)) </span></code></pre></div>
+<pre><code>## (Intercept) 
+##    1.648749</code></pre>
+</div>
+<div id="ajuste-de-sigma" class="section level3">
+<h3>Ajuste de sigma</h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="kw">coef</span>(ajustePE, <span class="dt">parameter =</span> <span class="st">&#39;sigma&#39;</span>)</span></code></pre></div>
+<pre><code>## (Intercept)           x 
+##  1.37800315  0.04148813</code></pre>
+<p>Vamos ver diferentes formas de extrair erros padrões para as estimativas dos parâmetros de regressão.</p>
+</div>
+<div id="matriz-de-variâncias-e-covariâncias" class="section level3">
+<h3>Matriz de variâncias e covariâncias</h3>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">3</span>)</span>
+<span id="cb32-2"><a href="#cb32-2"></a>V &lt;-<span class="st"> </span><span class="kw">vcov</span>(ajustePE) </span>
+<span id="cb32-3"><a href="#cb32-3"></a>V</span></code></pre></div>
+<pre><code>##                            (Intercept) poly(x, 2, raw = TRUE)1
+## (Intercept)             75.42309099831         -6.405779377024
+## poly(x, 2, raw = TRUE)1 -6.40577937702          0.548635900277
+## poly(x, 2, raw = TRUE)2  0.12283305114         -0.010586697668
+## (Intercept)             -0.00057753245         -0.000024626887
+## x                        0.00003917985         -0.000001425856
+## (Intercept)             -0.04454757176          0.004302646313
+##                         poly(x, 2, raw = TRUE)2     (Intercept)             x
+## (Intercept)                        1.228331e-01 -0.000577532455  3.917985e-05
+## poly(x, 2, raw = TRUE)1           -1.058670e-02 -0.000024626887 -1.425856e-06
+## poly(x, 2, raw = TRUE)2            2.056904e-04  0.000000433212  2.891564e-08
+## (Intercept)                        4.332120e-07  0.011423525386 -3.804617e-04
+## x                                  2.891564e-08 -0.000380461663  1.389839e-05
+## (Intercept)                       -8.336518e-05 -0.001102518444  2.891460e-05
+##                            (Intercept)
+## (Intercept)             -0.04454757176
+## poly(x, 2, raw = TRUE)1  0.00430264631
+## poly(x, 2, raw = TRUE)2 -0.00008336518
+## (Intercept)             -0.00110251844
+## x                        0.00002891460
+## (Intercept)              0.00684116996</code></pre>
+<p>Da linha 1 à linha 3 temos os valores referentes ao parâmetro de locação (<span class="math inline">\(\mu\)</span>); nas linhas 4 e 5 aqueles referentes a <span class="math inline">\(\sigma\)</span> (escala). Na linha 6, finalmente, a estimativa referente ao parâmetro de forma (<span class="math inline">\(\nu\)</span>).</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>vars &lt;-<span class="st"> </span><span class="kw">diag</span>(V) <span class="co"># Variâncias assintóticas dos beta&#39;s chapéus.</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="kw">sqrt</span>(vars) <span class="co"># Erros padrões assintóticos.</span></span></code></pre></div>
+<pre><code>##             (Intercept) poly(x, 2, raw = TRUE)1 poly(x, 2, raw = TRUE)2 
+##             8.684646855             0.740699602             0.014341912 
+##             (Intercept)                       x             (Intercept) 
+##             0.106880893             0.003728054             0.082711365</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="kw">summary</span>(ajustePE) </span></code></pre></div>
+<pre><code>## ******************************************************************
+## Family:  c(&quot;PE&quot;, &quot;Power Exponential&quot;) 
+## 
+## Call:  gamlss(formula = y ~ poly(x, 2, raw = TRUE), sigma.formula = ~x,  
+##     family = PE, data = abdom) 
+## 
+## Fitting method: RS() 
+## 
+## ------------------------------------------------------------------
+## Mu link function:  identity
+## Mu Coefficients:
+##                          Estimate Std. Error t value  Pr(&gt;|t|)    
+## (Intercept)             -97.23838    8.68465 -11.197   &lt; 2e-16 ***
+## poly(x, 2, raw = TRUE)1  13.68755    0.74070  18.479   &lt; 2e-16 ***
+## poly(x, 2, raw = TRUE)2  -0.06065    0.01434  -4.229 0.0000271 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## Sigma link function:  log
+## Sigma Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 1.378003   0.106881   12.89   &lt;2e-16 ***
+## x           0.041488   0.003728   11.13   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## Nu link function:  log 
+## Nu Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.50002    0.08271   6.045 2.61e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## No. of observations in the fit:  610 
+## Degrees of Freedom for the fit:  6
+##       Residual Deg. of Freedom:  604 
+##                       at cycle:  3 
+##  
+## Global Deviance:     4787.288 
+##             AIC:     4799.288 
+##             SBC:     4825.769 
+## ******************************************************************</code></pre>
+<p>Observe que são os mesmos valores retornados pelo summary.</p>
+</div>
+<div id="resumo-do-ajuste-com-erros-padrões-robustos" class="section level3">
+<h3>Resumo do ajuste com erros padrões robustos</h3>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="kw">summary</span>(ajustePE, <span class="dt">robust =</span> <span class="ot">TRUE</span>) </span></code></pre></div>
+<pre><code>## ******************************************************************
+## Family:  c(&quot;PE&quot;, &quot;Power Exponential&quot;) 
+## 
+## Call:  gamlss(formula = y ~ poly(x, 2, raw = TRUE), sigma.formula = ~x,  
+##     family = PE, data = abdom) 
+## 
+## Fitting method: RS() 
+## 
+## ------------------------------------------------------------------
+## Mu link function:  identity
+## Mu Coefficients:
+##                          Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)             -97.23838   16.71717  -5.817 9.74e-09 ***
+## poly(x, 2, raw = TRUE)1  13.68755    1.42367   9.614  &lt; 2e-16 ***
+## poly(x, 2, raw = TRUE)2  -0.06065    0.02741  -2.212   0.0273 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## Sigma link function:  log
+## Sigma Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 1.378003   0.104617   13.17   &lt;2e-16 ***
+## x           0.041488   0.003771   11.00   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## Nu link function:  log 
+## Nu Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   0.5000     0.0858   5.827 9.16e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## No. of observations in the fit:  610 
+## Degrees of Freedom for the fit:  6
+##       Residual Deg. of Freedom:  604 
+##                       at cycle:  3 
+##  
+## Global Deviance:     4787.288 
+##             AIC:     4799.288 
+##             SBC:     4825.769 
+## ******************************************************************</code></pre>
+</div>
+<div id="matriz-hessiana-informação" class="section level3">
+<h3>Matriz Hessiana (informação)</h3>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="kw">solve</span>(V)</span></code></pre></div>
+<pre><code>##                            (Intercept) poly(x, 2, raw = TRUE)1
+## (Intercept)                5.051075163             112.7704853
+## poly(x, 2, raw = TRUE)1  112.770485316            2784.5065724
+## poly(x, 2, raw = TRUE)2 2786.165993541           75935.2209368
+## (Intercept)               -0.003503203              -0.0569861
+## x                         -0.068386385              -1.1756584
+## (Intercept)               -4.082785097             -91.6175015
+##                         poly(x, 2, raw = TRUE)2     (Intercept)               x
+## (Intercept)                          2786.16599    -0.003503203     -0.06838638
+## poly(x, 2, raw = TRUE)1             75935.22094    -0.056986096     -1.17565844
+## poly(x, 2, raw = TRUE)2           2248452.93415    11.943640857    193.84450820
+## (Intercept)                            11.94364  1005.759785585  27435.87581006
+## x                                     193.84451 27435.875810056 821009.38663132
+## (Intercept)                         -2215.29586    46.286843371    954.16036152
+##                          (Intercept)
+## (Intercept)                -4.082785
+## poly(x, 2, raw = TRUE)1   -91.617502
+## poly(x, 2, raw = TRUE)2 -2215.295863
+## (Intercept)                46.286843
+## x                         954.160362
+## (Intercept)               153.640962</code></pre>
+</div>
+<div id="forma-alternativa-de-extrair-os-erros-padrões" class="section level3">
+<h3>Forma alternativa de extrair os erros padrões</h3>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="kw">vcov</span>(ajustePE, <span class="dt">type =</span> <span class="st">&#39;se&#39;</span>) </span></code></pre></div>
+<pre><code>##             (Intercept) poly(x, 2, raw = TRUE)1 poly(x, 2, raw = TRUE)2 
+##             8.684646855             0.740699602             0.014341912 
+##             (Intercept)                       x             (Intercept) 
+##             0.106880893             0.003728054             0.082711365</code></pre>
+</div>
+<div id="erros-padrões-robustos" class="section level3">
+<h3>Erros padrões robustos</h3>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="kw">vcov</span>(ajustePE, <span class="dt">type =</span> <span class="st">&#39;se&#39;</span>, <span class="dt">robust =</span> <span class="ot">TRUE</span>) </span></code></pre></div>
+<pre><code>##             (Intercept) poly(x, 2, raw = TRUE)1 poly(x, 2, raw = TRUE)2 
+##            16.717168938             1.423667195             0.027414653 
+##             (Intercept)                       x             (Intercept) 
+##             0.104617226             0.003770879             0.085804256</code></pre>
+</div>
+<div id="matriz-de-correlações" class="section level3">
+<h3>Matriz de correlações</h3>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>Cors &lt;-<span class="st"> </span><span class="kw">vcov</span>(ajustePE, <span class="dt">type =</span> <span class="st">&#39;cor&#39;</span>); Cors </span></code></pre></div>
+<pre><code>##                           (Intercept) poly(x, 2, raw = TRUE)1
+## (Intercept)              1.0000000000           -0.9958127954
+## poly(x, 2, raw = TRUE)1 -0.9958127954            1.0000000000
+## poly(x, 2, raw = TRUE)2  0.9861796254           -0.9965781221
+## (Intercept)             -0.0006221916           -0.0003110766
+## x                        0.0012101201           -0.0005163584
+## (Intercept)             -0.0620164187            0.0702309182
+##                         poly(x, 2, raw = TRUE)2   (Intercept)             x
+## (Intercept)                        0.9861796254 -0.0006221916  0.0012101201
+## poly(x, 2, raw = TRUE)1           -0.9965781221 -0.0003110766 -0.0005163584
+## poly(x, 2, raw = TRUE)2            1.0000000000  0.0002826138  0.0005408085
+## (Intercept)                        0.0002826138  1.0000000000 -0.9548356941
+## x                                  0.0005408085 -0.9548356941  1.0000000000
+## (Intercept)                       -0.0702768791 -0.1247155476  0.0937712734
+##                         (Intercept)
+## (Intercept)             -0.06201642
+## poly(x, 2, raw = TRUE)1  0.07023092
+## poly(x, 2, raw = TRUE)2 -0.07027688
+## (Intercept)             -0.12471555
+## x                        0.09377127
+## (Intercept)              1.00000000</code></pre>
+<p>A função <code>prof.dev</code> produz o gráfico do perfil da deviance para algum parâmetro do modelo (<span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\nu\)</span> ou <span class="math inline">\(\tau\)</span>) para o qual não foi incluida qualquer variável explicativa (ou seja, para o qual será estimado apenas o intercepto).</p>
+</div>
+<div id="perfil-de-deviance-para-nu" class="section level3">
+<h3>Perfil de deviance para nu</h3>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="kw">par</span>(<span class="dt">cex =</span> <span class="fl">1.2</span>, <span class="dt">las =</span> <span class="dv">1</span>)</span>
+<span id="cb48-2"><a href="#cb48-2"></a>perf_dev &lt;-<span class="st"> </span><span class="kw">prof.dev</span>(ajustePE, <span class="st">&#39;nu&#39;</span>, <span class="dt">min =</span> <span class="fl">0.75</span>, <span class="dt">max =</span> <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## ****************************************************************** 
+## nu.start=( 0.75 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4875.213 
+## GAMLSS-RS iteration 2: Global Deviance = 4872.778 
+## GAMLSS-RS iteration 3: Global Deviance = 4872.8 
+## GAMLSS-RS iteration 4: Global Deviance = 4872.812 
+## GAMLSS-RS iteration 5: Global Deviance = 4872.78 
+## GAMLSS-RS iteration 6: Global Deviance = 4872.801 
+## GAMLSS-RS iteration 7: Global Deviance = 4873.07 
+## GAMLSS-RS iteration 8: Global Deviance = 4872.855 
+## GAMLSS-RS iteration 9: Global Deviance = 4872.971 
+## GAMLSS-RS iteration 10: Global Deviance = 4872.918 
+## GAMLSS-RS iteration 11: Global Deviance = 4872.783 
+## GAMLSS-RS iteration 12: Global Deviance = 4872.815 
+## GAMLSS-RS iteration 13: Global Deviance = 4872.777 
+## GAMLSS-RS iteration 14: Global Deviance = 4872.782 
+## GAMLSS-RS iteration 15: Global Deviance = 4872.782 
+## ****************************************************************** 
+## nu.start=( 1.458333 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4789.488 
+## GAMLSS-RS iteration 2: Global Deviance = 4789.488 
+## ****************************************************************** 
+## nu.start=( 2.166667 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4798.396 
+## GAMLSS-RS iteration 2: Global Deviance = 4798.396 
+## ****************************************************************** 
+## nu.start=( 2.875 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4833.6 
+## GAMLSS-RS iteration 2: Global Deviance = 4833.599 
+## ****************************************************************** 
+## nu.start=( 3.583333 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4877.098 
+## GAMLSS-RS iteration 2: Global Deviance = 4877.097 
+## ****************************************************************** 
+## nu.start=( 4.291667 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4921.43 
+## GAMLSS-RS iteration 2: Global Deviance = 4921.429 
+## ****************************************************************** 
+## nu.start=( 5 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4962.846 
+## GAMLSS-RS iteration 2: Global Deviance = 4962.846 
+## ******************************************************************</code></pre>
+<p><img src="mod3_1_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<pre><code>## ****************************************************************** 
+## The Maximum Likelihood estimator is  1.672389 
+## with a Global Deviance equal to  4785.909 
+## A  95 % Confidence interval is: ( 1.451016 , 1.92469 ) 
+## ******************************************************************</code></pre>
+<p>Perfil da deviance para <span class="math inline">\(\nu\)</span>. As linhas tracejadas indicam a estimativa de máxima verossimilhança e os limites de confiança (95%) para <span class="math inline">\(\mu\)</span>.</p>
+</div>
+<div id="intervalo-de-confiança-para-mu" class="section level3">
+<h3>Intervalo de confiança para mu</h3>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>perf_dev<span class="op">$</span>CI</span></code></pre></div>
+<pre><code>## [1] 1.451016 1.924690</code></pre>
+<p>Limites de 95% baseados no perfil da verossimilhança. Vamos ver como ficaria usando um intervalo do tipo Wald.</p>
+</div>
+<div id="intervalo-do-tipo-wald." class="section level3">
+<h3>Intervalo do tipo Wald.</h3>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>summ &lt;-<span class="st"> </span><span class="kw">summary</span>(ajustePE)</span></code></pre></div>
+<pre><code>## ******************************************************************
+## Family:  c(&quot;PE&quot;, &quot;Power Exponential&quot;) 
+## 
+## Call:  gamlss(formula = y ~ poly(x, 2, raw = TRUE), sigma.formula = ~x,  
+##     family = PE, data = abdom) 
+## 
+## Fitting method: RS() 
+## 
+## ------------------------------------------------------------------
+## Mu link function:  identity
+## Mu Coefficients:
+##                          Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)             -97.23838    8.68465 -11.197  &lt; 2e-16 ***
+## poly(x, 2, raw = TRUE)1  13.68755    0.74070  18.479  &lt; 2e-16 ***
+## poly(x, 2, raw = TRUE)2  -0.06065    0.01434  -4.229 2.71e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## Sigma link function:  log
+## Sigma Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 1.378003   0.106881   12.89   &lt;2e-16 ***
+## x           0.041488   0.003728   11.13   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## Nu link function:  log 
+## Nu Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.50002    0.08271   6.045 2.61e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## No. of observations in the fit:  610 
+## Degrees of Freedom for the fit:  6
+##       Residual Deg. of Freedom:  604 
+##                       at cycle:  3 
+##  
+## Global Deviance:     4787.288 
+##             AIC:     4799.288 
+##             SBC:     4825.769 
+## ******************************************************************</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="kw">c</span>(<span class="kw">exp</span>(summ[<span class="dv">6</span>,<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>summ[<span class="dv">6</span>,<span class="dv">2</span>]), <span class="kw">exp</span>(summ[<span class="dv">6</span>,<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>summ[<span class="dv">6</span>,<span class="dv">2</span>]))</span></code></pre></div>
+<pre><code>## [1] 1.402004 1.938920</code></pre>
+<p>Repare que o método de Wald produz IC diferente daquele obtido pelo perfil da deviance. Neste caso, em que o perfil da deviance é bastante assimétrico, o intervalo de Wald não é recomendável.</p>
+</div>
+<div id="ic-com-confint" class="section level3">
+<h3>IC com confint</h3>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># NA ESCALA DO PREDITOR</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a><span class="kw">confint</span>(ajustePE, <span class="dt">what =</span> <span class="st">&quot;mu&quot;</span>)</span></code></pre></div>
+<pre><code>##                                 2.5 %       97.5 %
+## (Intercept)             -114.25997861 -80.21678850
+## poly(x, 2, raw = TRUE)1   12.23580480  15.13929389
+## poly(x, 2, raw = TRUE)2   -0.08875731  -0.03253805</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="kw">confint</span>(ajustePE, <span class="dt">what =</span> <span class="st">&quot;sigma&quot;</span>)</span></code></pre></div>
+<pre><code>##                    2.5 %      97.5 %
+## (Intercept) -15.64359190 18.39959820
+## x             0.03418128  0.04879498</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="kw">confint</span>(ajustePE, <span class="dt">what =</span> <span class="st">&quot;nu&quot;</span>) <span class="co"># PROBLEMAAAA</span></span></code></pre></div>
+<pre><code>##                 2.5 %   97.5 %
+## (Intercept) -16.52158 17.52161</code></pre>
+<p>Por default, a função <code>prof.dev</code> avalia o perfil da deviance em apenas sete pontos de <span class="math inline">\(\nu\)</span>.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>perf_dev<span class="op">$</span>values</span></code></pre></div>
+<pre><code>##      interval G.deviances
+## [1,] 0.750000    4872.782
+## [2,] 1.458333    4789.488
+## [3,] 2.166667    4798.396
+## [4,] 2.875000    4833.599
+## [5,] 3.583333    4877.097
+## [6,] 4.291667    4921.429
+## [7,] 5.000000    4962.846</code></pre>
+<p>Vamos refinar, aumentando o número de pontos, para uma melhor visualização. Neste caso estamos aumentando para 20 pontos.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>perf_dev &lt;-<span class="st"> </span><span class="kw">prof.dev</span>(ajustePE, <span class="st">&#39;nu&#39;</span>, <span class="dt">min =</span> <span class="fl">0.75</span>, <span class="dt">max =</span> <span class="dv">5</span>, <span class="dt">length =</span> <span class="dv">20</span>)</span></code></pre></div>
+<pre><code>## ****************************************************************** 
+## nu.start=( 0.75 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4875.213 
+## GAMLSS-RS iteration 2: Global Deviance = 4872.778 
+## GAMLSS-RS iteration 3: Global Deviance = 4872.8 
+## GAMLSS-RS iteration 4: Global Deviance = 4872.812 
+## GAMLSS-RS iteration 5: Global Deviance = 4872.78 
+## GAMLSS-RS iteration 6: Global Deviance = 4872.801 
+## GAMLSS-RS iteration 7: Global Deviance = 4873.07 
+## GAMLSS-RS iteration 8: Global Deviance = 4872.855 
+## GAMLSS-RS iteration 9: Global Deviance = 4872.971 
+## GAMLSS-RS iteration 10: Global Deviance = 4872.918 
+## GAMLSS-RS iteration 11: Global Deviance = 4872.783 
+## GAMLSS-RS iteration 12: Global Deviance = 4872.815 
+## GAMLSS-RS iteration 13: Global Deviance = 4872.777 
+## GAMLSS-RS iteration 14: Global Deviance = 4872.782 
+## GAMLSS-RS iteration 15: Global Deviance = 4872.782 
+## ****************************************************************** 
+## nu.start=( 0.9736842 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4826.516 
+## GAMLSS-RS iteration 2: Global Deviance = 4826.518 
+## GAMLSS-RS iteration 3: Global Deviance = 4826.497 
+## GAMLSS-RS iteration 4: Global Deviance = 4826.499 
+## GAMLSS-RS iteration 5: Global Deviance = 4826.5 
+## ****************************************************************** 
+## nu.start=( 1.197368 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4802.011 
+## GAMLSS-RS iteration 2: Global Deviance = 4802.011 
+## ****************************************************************** 
+## nu.start=( 1.421053 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4790.508 
+## GAMLSS-RS iteration 2: Global Deviance = 4790.508 
+## ****************************************************************** 
+## nu.start=( 1.644737 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4787.289 
+## GAMLSS-RS iteration 2: Global Deviance = 4787.289 
+## ****************************************************************** 
+## nu.start=( 1.868421 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4789.602 
+## GAMLSS-RS iteration 2: Global Deviance = 4789.602 
+## ****************************************************************** 
+## nu.start=( 2.092105 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4795.719 
+## GAMLSS-RS iteration 2: Global Deviance = 4795.719 
+## ****************************************************************** 
+## nu.start=( 2.315789 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4804.507 
+## GAMLSS-RS iteration 2: Global Deviance = 4804.507 
+## ****************************************************************** 
+## nu.start=( 2.539474 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4815.19 
+## GAMLSS-RS iteration 2: Global Deviance = 4815.19 
+## ****************************************************************** 
+## nu.start=( 2.763158 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4827.216 
+## GAMLSS-RS iteration 2: Global Deviance = 4827.216 
+## ****************************************************************** 
+## nu.start=( 2.986842 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4840.173 
+## GAMLSS-RS iteration 2: Global Deviance = 4840.173 
+## ****************************************************************** 
+## nu.start=( 3.210526 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4853.749 
+## GAMLSS-RS iteration 2: Global Deviance = 4853.749 
+## ****************************************************************** 
+## nu.start=( 3.434211 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4867.695 
+## GAMLSS-RS iteration 2: Global Deviance = 4867.695 
+## ****************************************************************** 
+## nu.start=( 3.657895 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4881.811 
+## GAMLSS-RS iteration 2: Global Deviance = 4881.811 
+## ****************************************************************** 
+## nu.start=( 3.881579 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4895.936 
+## GAMLSS-RS iteration 2: Global Deviance = 4895.936 
+## ****************************************************************** 
+## nu.start=( 4.105263 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4909.936 
+## GAMLSS-RS iteration 2: Global Deviance = 4909.936 
+## ****************************************************************** 
+## nu.start=( 4.328947 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4923.704 
+## GAMLSS-RS iteration 2: Global Deviance = 4923.704 
+## ****************************************************************** 
+## nu.start=( 4.552632 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4937.153 
+## GAMLSS-RS iteration 2: Global Deviance = 4937.153 
+## ****************************************************************** 
+## nu.start=( 4.776316 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4950.217 
+## GAMLSS-RS iteration 2: Global Deviance = 4950.217 
+## ****************************************************************** 
+## nu.start=( 5 ) 
+## GAMLSS-RS iteration 1: Global Deviance = 4962.846 
+## GAMLSS-RS iteration 2: Global Deviance = 4962.846 
+## ******************************************************************</code></pre>
+<p><img src="mod3_1_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<pre><code>## ****************************************************************** 
+## The Maximum Likelihood estimator is  1.648408 
+## with a Global Deviance equal to  4787.289 
+## A  95 % Confidence interval is: ( 1.401624 , 1.93682 ) 
+## ******************************************************************</code></pre>
+<p>Vamos visualizar o ajuste.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="kw">library</span>(gamlss.util)</span>
+<span id="cb68-2"><a href="#cb68-2"></a><span class="kw">plotSimpleGamlss</span>(y, x, <span class="dt">model =</span> ajustePE, <span class="dt">data=</span>abdom, <span class="dt">x.val=</span><span class="kw">seq</span>(<span class="dv">15</span>, <span class="dv">40</span>, <span class="dv">5</span>), </span>
+<span id="cb68-3"><a href="#cb68-3"></a>                 <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">450</span>), <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">45</span>))</span></code></pre></div>
+<p><img src="mod3_1_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p>Agora vamos explorar o uso da <code>função prof.term</code> que, diferentemente da função <code>prof.dev</code>, pode ser aplicada a qualquer parâmetro no preditor de <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\nu\)</span> ou <span class="math inline">\(\tau\)</span> (e não apenas a uma constante (intercepto)).</p>
+</div>
+<div id="expresão-do-modelo" class="section level3">
+<h3>Expresão do modelo</h3>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>modPE &lt;-<span class="st"> </span><span class="kw">quote</span>(<span class="kw">gamlss</span>(y <span class="op">~</span><span class="st"> </span><span class="kw">poly</span>(x, <span class="dv">2</span>, <span class="dt">raw =</span> <span class="ot">TRUE</span>), <span class="dt">sigma.formula =</span><span class="op">~</span><span class="st"> </span><span class="kw">offset</span>(this<span class="op">*</span>x), <span class="dt">data =</span> abdom, <span class="dt">family =</span> PE))</span></code></pre></div>
+</div>
+<div id="perfil-da-deviance-e-ic95-para-sigma" class="section level3">
+<h3>Perfil da deviance e IC(95%) para sigma</h3>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="kw">prof.term</span>(modPE, <span class="dt">min =</span> <span class="fl">0.01</span>, <span class="dt">max =</span> <span class="fl">0.1</span>, <span class="dt">length =</span> <span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 4861.035 
+## GAMLSS-RS iteration 2: Global Deviance = 4848.539 
+## GAMLSS-RS iteration 3: Global Deviance = 4848.539 
+## GAMLSS-RS iteration 1: Global Deviance = 4822.745 
+## GAMLSS-RS iteration 2: Global Deviance = 4822.652 
+## GAMLSS-RS iteration 3: Global Deviance = 4822.651 
+## GAMLSS-RS iteration 1: Global Deviance = 4802.923 
+## GAMLSS-RS iteration 2: Global Deviance = 4802.875 
+## GAMLSS-RS iteration 3: Global Deviance = 4802.875 
+## GAMLSS-RS iteration 1: Global Deviance = 4790.709 
+## GAMLSS-RS iteration 2: Global Deviance = 4790.689 
+## GAMLSS-RS iteration 3: Global Deviance = 4790.689 
+## GAMLSS-RS iteration 1: Global Deviance = 4787.404 
+## GAMLSS-RS iteration 2: Global Deviance = 4787.399 
+## GAMLSS-RS iteration 3: Global Deviance = 4787.399 
+## GAMLSS-RS iteration 1: Global Deviance = 4793.691 
+## GAMLSS-RS iteration 2: Global Deviance = 4793.69 
+## GAMLSS-RS iteration 1: Global Deviance = 4809.273 
+## GAMLSS-RS iteration 2: Global Deviance = 4809.261 
+## GAMLSS-RS iteration 3: Global Deviance = 4809.261 
+## GAMLSS-RS iteration 1: Global Deviance = 4832.936 
+## GAMLSS-RS iteration 2: Global Deviance = 4832.898 
+## GAMLSS-RS iteration 3: Global Deviance = 4832.897 
+## GAMLSS-RS iteration 1: Global Deviance = 4863.02 
+## GAMLSS-RS iteration 2: Global Deviance = 4862.935 
+## GAMLSS-RS iteration 3: Global Deviance = 4862.935 
+## GAMLSS-RS iteration 1: Global Deviance = 4897.864 
+## GAMLSS-RS iteration 2: Global Deviance = 4897.741 
+## GAMLSS-RS iteration 3: Global Deviance = 4897.74 
+## GAMLSS-RS iteration 4: Global Deviance = 4897.74 
+## GAMLSS-RS iteration 1: Global Deviance = 4936.133 
+## GAMLSS-RS iteration 2: Global Deviance = 4935.913 
+## GAMLSS-RS iteration 3: Global Deviance = 4935.906 
+## GAMLSS-RS iteration 4: Global Deviance = 4935.907 
+## GAMLSS-RS iteration 1: Global Deviance = 4976.604 
+## GAMLSS-RS iteration 2: Global Deviance = 4976.392 
+## GAMLSS-RS iteration 3: Global Deviance = 4976.386 
+## GAMLSS-RS iteration 4: Global Deviance = 4976.386</code></pre>
+<p><img src="mod3_1_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<pre><code>## ****************************************************************** 
+## The Maximum Likelihood estimator is  0.04148137 
+## with a Global Deviance equal to  4787.289 
+## A  95 % Confidence interval is: ( 0.03412165 , 0.04880541 ) 
+## ******************************************************************</code></pre>
+</div>
+<div id="perfil-da-deviance-e-ic99-para-sigma" class="section level3">
+<h3>Perfil da deviance e IC(99%) para sigma</h3>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="kw">prof.term</span>(modPE, <span class="dt">min =</span> <span class="fl">0.01</span>, <span class="dt">max =</span> <span class="fl">0.1</span>, <span class="dt">length =</span> <span class="dv">12</span>, <span class="dt">perc =</span> <span class="dv">99</span>)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 4861.035 
+## GAMLSS-RS iteration 2: Global Deviance = 4848.539 
+## GAMLSS-RS iteration 3: Global Deviance = 4848.539 
+## GAMLSS-RS iteration 1: Global Deviance = 4822.745 
+## GAMLSS-RS iteration 2: Global Deviance = 4822.652 
+## GAMLSS-RS iteration 3: Global Deviance = 4822.651 
+## GAMLSS-RS iteration 1: Global Deviance = 4802.923 
+## GAMLSS-RS iteration 2: Global Deviance = 4802.875 
+## GAMLSS-RS iteration 3: Global Deviance = 4802.875 
+## GAMLSS-RS iteration 1: Global Deviance = 4790.709 
+## GAMLSS-RS iteration 2: Global Deviance = 4790.689 
+## GAMLSS-RS iteration 3: Global Deviance = 4790.689 
+## GAMLSS-RS iteration 1: Global Deviance = 4787.404 
+## GAMLSS-RS iteration 2: Global Deviance = 4787.399 
+## GAMLSS-RS iteration 3: Global Deviance = 4787.399 
+## GAMLSS-RS iteration 1: Global Deviance = 4793.691 
+## GAMLSS-RS iteration 2: Global Deviance = 4793.69 
+## GAMLSS-RS iteration 1: Global Deviance = 4809.273 
+## GAMLSS-RS iteration 2: Global Deviance = 4809.261 
+## GAMLSS-RS iteration 3: Global Deviance = 4809.261 
+## GAMLSS-RS iteration 1: Global Deviance = 4832.936 
+## GAMLSS-RS iteration 2: Global Deviance = 4832.898 
+## GAMLSS-RS iteration 3: Global Deviance = 4832.897 
+## GAMLSS-RS iteration 1: Global Deviance = 4863.02 
+## GAMLSS-RS iteration 2: Global Deviance = 4862.935 
+## GAMLSS-RS iteration 3: Global Deviance = 4862.935 
+## GAMLSS-RS iteration 1: Global Deviance = 4897.864 
+## GAMLSS-RS iteration 2: Global Deviance = 4897.741 
+## GAMLSS-RS iteration 3: Global Deviance = 4897.74 
+## GAMLSS-RS iteration 4: Global Deviance = 4897.74 
+## GAMLSS-RS iteration 1: Global Deviance = 4936.133 
+## GAMLSS-RS iteration 2: Global Deviance = 4935.913 
+## GAMLSS-RS iteration 3: Global Deviance = 4935.906 
+## GAMLSS-RS iteration 4: Global Deviance = 4935.907 
+## GAMLSS-RS iteration 1: Global Deviance = 4976.604 
+## GAMLSS-RS iteration 2: Global Deviance = 4976.392 
+## GAMLSS-RS iteration 3: Global Deviance = 4976.386 
+## GAMLSS-RS iteration 4: Global Deviance = 4976.386</code></pre>
+<p><img src="mod3_1_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<pre><code>## ****************************************************************** 
+## The Maximum Likelihood estimator is  0.04148137 
+## with a Global Deviance equal to  4787.289 
+## A  99 % Confidence interval is: ( 0.03173139 , 0.05108619 ) 
+## ******************************************************************</code></pre>
+<p>Mais adiante vamos explorar usos alternativos e recursos adicionais dessas funções.</p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -31,22 +31,22 @@ Utilidade do **wormplot**: avaliar normalidade, qqplot descontruído. Cada ponto
 
 Nos slides, `gamlss` significa o pacote e GAMLSS significa a técnica estatística como um todo.
 
-Com GAMLSS é possível:  
-- Modelar variáveis resposta com distribuição de familia exponencial
-- a relação entre a média de y e as covariáveis não precisa ser necessariamente linear, mas linearizável.
-- parâmetros estimados por algoritmo de mínimos quadrados ponderados iterativamente.
+Com GAMLSS é possível:      
+- Modelar variáveis resposta com distribuição de familia exponencia  
+- a relação entre a média de y e as covariáveis não precisa ser necessariamente linear, mas linearizável.  
+- parâmetros estimados por algoritmo de mínimos quadrados ponderados iterativamente.  
 
 **GAMLSS são semi-paramétricos porque permitem a inclusão de termos não-paramétricos associados a covariáveis, mas a base do GAMLSS é um modelo probabilístico.**
 
 ***
-### Dados 
+### <span style="color:#05C086">Dados</span>
 
 Base de dados de preço de aluguel de imóveis em Munique em 1980. Os modelos aumentarão a complexidade.
 
 **Variável resposta:** valor do aluguel (marcos alemães, valor líquido)
 
 ***
-### Pacote GAMLSS
+### <span style="color:#05C086">Pacote GAMLSS</span>
 
 `library(gamlss)`  
 **Parâmetros da função** `gamlss`:  
@@ -62,13 +62,13 @@ Base de dados de preço de aluguel de imóveis em Munique em 1980. Os modelos au
 **Observação**: lembrando que há 3 tipos de distribuições: continuas, discretas e mistas.
 
 ***
-### Modelos
+### <span style="color:#05C086">Modelos</span>
 
-#### 1. Modelo Linear
+#### <span style="color:#05C086">Modelo 1: Modelo Linear</span>
 
 Aquele simples de regressão linear estudado no 5º período. A média da variável resposta é condicional aos valores das covariáveis. A **variância** é assumida como **constante**.
 
-Se não for homocedástico:
+Se não for homocedástico:  
 a) aplica-se mínimos quadrados ponderados.  
 b) pode-se transformar os dados.   
 c) pode-se usar GAMLSS  
@@ -95,7 +95,7 @@ Apesar do modelo linear ser analítico, na biblioteca `gamlss` é necessário um
 Como saber se o **modelo se ajusta bem aos dados? Observa os resíduos**, especialmente com gráficos.
 
 ***
-#### 2. Modelo Linear Generalizado
+#### <span style="color:#05C086">Modelo 2: Modelo Linear Generalizado</span>
 
 Slide 21/54: Distribuição Gama, assimétrica à direita. A medida que aumenta $x$, em média, $y$ também aumenta. Além disso, a variância não é constante, a dispersão aumenta.
 
@@ -120,13 +120,15 @@ Qual o espaço parâmetrico do parâmetro?
 No `gamlss`, há a função `GAIC` que calcula os AIC's ou versões mais gerais de medida de informação. Quanto **menor** o AIC, melhor o ajuste do modelo.
 
 ***
-#### 3. Modelo Generalizado Aditivo (GAM)
+#### <span style="color:#05C086">Modelo 3: Modelo Generalizado Aditivo (GAM)</span>
 
 Só muda uma coisa em relação ao GLM, no GAM é possível lidar com relações não lineares entre covariáveis e resposta por meio de **suavizadores**.
 
 **Suavizadores:** termos associados a covariáveis que são incluidos no preditor de um modelo de regressão que não depende de parâmetros, depende apenas dos dados. Objetivo é descrever a tendência dos dados ou algum comportamento dos dados baseado unicamente na distribuição dos dados. É livre de parâmetros. São mais flexíveis e permitem modelar não linearidades.
 
 Efeitos de covariáveis são inseridos ao preditor por meio de funções suaves.
+
+Em geral, **não** se coloca suavizadores em variáveis preditoras como **fator.**
 
 **Modelo:**
 $$y|x \text{ ~ }f(\mu_x,\phi)$$
@@ -141,7 +143,7 @@ $$log(\mu_x) = \beta_0 + s_1(Fl) + s2(A) + \beta_1I(H=1) + \beta_2I(loc = 2) + \
 A função `pb()` é um suavizador da biblioteca gamlss. Usado `pb(Fl)` e `pb(A)`.
 
 ***
-#### 4. Modelo Generalizado Aditivo Duplo
+#### <span style="color:#05C086">Modelos 4 e 5: Modelo Generalizado Aditivo Duplo</span>
 
 Pode ser um GLM duplo ou um GAM duplo.
 
@@ -153,20 +155,22 @@ Haverá funções de ligação correspondente aos parâmetros $g_1(\mu_x)$ e $g_
 $$g_1(\mu_x) = \beta_{10} + \beta_{11}x_1 + ... + \beta_{1j1}x_{j1} + ... + s_{j1}+1(x_{j1}+1) + s_{r1}(x_{r1})$$
 $$g_2(\sigma_x) = \beta_{20} + \beta_{21}x_1 + ... + \beta_{2j2}x_{j2} + ... + s_{j2}+1(x_{j2}+1) + s_{r2}(x_{r2})$$
 
+#### <span style="color:#05C086">Modelo 4</span>
+
 Foi escolhido criar um **modelo GAM duplo** com distribuição Gama. Ou seja, há dois preditores e dois suavizadores. 
 
 Os dois parâmetros estão definidos nos reais positivos, por isso função logarítmica em ambos os casos.
 
 **Gráfico term plot:** permite avaliar as relações principalmente quando há suavizadores. Efeito de cada covariável na média.
 
-##### **Modelo 5 **
+#### <span style="color:#05C086">Modelo 5</span>
 
 Modelo GAM Duplo com distribuição Normal Inversa.
 
 **Todos os modelos acima são casos particulares de GAMLSS**.
 
 ***
-#### 6. Modelo Generalizado aditivo para locação, escala e forma.
+#### <span style="color:#05C086">Modelos 6 e 7: Modelo Generalizado aditivo para locação, escala e forma.
 
 Cada parâmetro pode ser modelado em função de covariáveis.
 
@@ -201,11 +205,11 @@ Funções suaves para Fl e A. Comparação de modelos com Akaike (AIC) ou Akaike
 
 **Funções de ligação slide 49.**
 
-##### **Modelo 6 ** 
+#### <span style="color:#05C086">Modelo 6</span> 
 
 Distribuição BCCGo com função de ligação para o parâmetro $\mu$ e $\sigma$.
 
-##### **Modelo7 ** 
+#### <span style="color:#05C086">Modelo7</span>
 
 Distribuição BCCGo com função de ligação para o parâmetro $\mu$, $\sigma$ e $\nu$.
 

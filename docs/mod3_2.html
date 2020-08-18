@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Módulo 3 - parte 2</title>
+
+<script src="site_libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">GAMLSS</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Módulos
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Módulo 1 - introdução</li>
+    <li>
+      <a href="Caderno.html">Resumo</a>
+    </li>
+    <li>
+      <a href="exemplo_inicial.html">Conteúdo</a>
+    </li>
+    <li class="dropdown-header">Módulo 3</li>
+    <li>
+      <a href="mod3_1.html">Módulo 3 - Parte 1</a>
+    </li>
+    <li>
+      <a href="mod3_2.html">Módulo 3 - Parte 1</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Módulo 3 - parte 2</h1>
+
+</div>
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">require</span>(gamlss)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">require</span>(gamlss.demo)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">require</span>(gamlss.util)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">require</span>(faraway)</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">require</span>(boot)</span></code></pre></div>
+<p>Vamos usar a base de dados worldcup do pacote faraway. O objetivo aqui é modelar o número de chutes a gol em função da posição do jogador e do tempo que ele ficou em campo. Os dados são referentes aos jogos da copa do mundo de 2010.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">data</span>(<span class="st">&quot;worldcup&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>dados &lt;-<span class="st"> </span>worldcup[worldcup<span class="op">$</span>Position<span class="op">!=</span><span class="st">&#39;Goalkeeper&#39;</span>,]</span></code></pre></div>
+<p>Excluindo os goleiros da base.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">par</span>(<span class="dt">cex =</span> <span class="fl">1.25</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">barplot</span>(<span class="kw">table</span>(<span class="kw">factor</span>(dados<span class="op">$</span>Shots)), <span class="dt">xlab =</span> <span class="st">&#39;Número de chutes&#39;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>        <span class="dt">ylab =</span> <span class="st">&#39;Frequência&#39;</span>)</span></code></pre></div>
+<p><img src="mod3_2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>dados<span class="op">$</span>Position &lt;-<span class="st"> </span><span class="kw">factor</span>(dados<span class="op">$</span>Position)</span></code></pre></div>
+<p>Apenas para excluir o nível ‘Goalkeeper’ do fator ‘Position’.</p>
+<p>Alguns gráficos, para iniciar a análise.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">par</span>(<span class="dt">cex =</span> <span class="fl">1.25</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">plot</span>(Shots <span class="op">~</span><span class="st"> </span>Position, <span class="dt">data =</span> dados)</span></code></pre></div>
+<p><img src="mod3_2_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Os gráficos indicam que atacantes chutam mais que meio-campistas, que por sua vez chutam mais que os jogadores de defesa.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">plot</span>(<span class="kw">jitter</span>(Shots) <span class="op">~</span><span class="st"> </span>Time, <span class="dt">data =</span> dados, <span class="dt">ylab =</span> <span class="st">&#39;Shots&#39;</span>, </span>
+<span id="cb6-2"><a href="#cb6-2"></a>     <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, </span>
+<span id="cb6-3"><a href="#cb6-3"></a>     <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">pch =</span> <span class="dv">20</span>)</span></code></pre></div>
+<p><img src="mod3_2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>A frequência de chutes aumenta conforme o tempo em campo. Percebe-se aumento tanto na média (locação) quanto na variância (escala).</p>
+<div id="modelo-poisson" class="section level3">
+<h3>Modelo Poisson</h3>
+<p>Vamos começar pelo ajuste de um modelo log-linear, com resposta Poisson.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>ajustePO &lt;-<span class="st"> </span><span class="kw">gamlss</span>(Shots <span class="op">~</span><span class="st"> </span>Position <span class="op">+</span><span class="st"> </span>Time, <span class="dt">data =</span> dados, <span class="dt">family =</span> PO)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 2107.696 
+## GAMLSS-RS iteration 2: Global Deviance = 2107.696</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">plot</span>(ajustePO)</span></code></pre></div>
+<p><img src="mod3_2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre><code>## ******************************************************************
+##   Summary of the Randomised Quantile Residuals
+##                            mean   =  -0.06322369 
+##                        variance   =  1.613523 
+##                coef. of skewness  =  0.5608787 
+##                coef. of kurtosis  =  3.700733 
+## Filliben correlation coefficient  =  0.9903017 
+## ******************************************************************</code></pre>
+<p>Evidentemente o modelo não ajusta bem os dados.</p>
+<p>Vamos agora substituir a Poisson pela distribuição binomial negativa. Testaremos diferentes especificações para o modelo.</p>
+</div>
+<div id="modelo-bn1" class="section level3">
+<h3>Modelo BN1</h3>
+<p>Modelo sem covariáveis para o parâmetro de escala.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>ajusteNB1 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(Shots <span class="op">~</span><span class="st"> </span>Position <span class="op">+</span><span class="st"> </span>Time,  <span class="dt">data =</span> dados, <span class="dt">family =</span> NBI)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 1993.282 
+## GAMLSS-RS iteration 2: Global Deviance = 1992.048 
+## GAMLSS-RS iteration 3: Global Deviance = 1992.048</code></pre>
+</div>
+<div id="modelo-bn2" class="section level3">
+<h3>Modelo BN2</h3>
+<p>Modelo com a posição na modelagem do parâmetro de escala.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>ajusteNB2 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(Shots <span class="op">~</span><span class="st"> </span>Position <span class="op">+</span><span class="st"> </span>Time, <span class="dt">sigma.fo =</span><span class="op">~</span><span class="st"> </span>Position, </span>
+<span id="cb13-2"><a href="#cb13-2"></a>                    <span class="dt">data =</span> dados, <span class="dt">family =</span> NBI)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 1964.539 
+## GAMLSS-RS iteration 2: Global Deviance = 1961.897 
+## GAMLSS-RS iteration 3: Global Deviance = 1961.893 
+## GAMLSS-RS iteration 4: Global Deviance = 1961.893</code></pre>
+</div>
+<div id="modelo-bn3" class="section level3">
+<h3>Modelo BN3</h3>
+<p>Modelo com a posição e o tempo na modelagem do parâmetro de escala.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>ajusteNB3 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(Shots <span class="op">~</span><span class="st"> </span>Position <span class="op">+</span><span class="st"> </span>Time, <span class="dt">sigma.fo =</span><span class="op">~</span><span class="st"> </span>Position <span class="op">+</span><span class="st"> </span>Time, </span>
+<span id="cb15-2"><a href="#cb15-2"></a>                    <span class="dt">data =</span> dados, <span class="dt">family =</span> NBI)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 1964.36 
+## GAMLSS-RS iteration 2: Global Deviance = 1961.534 
+## GAMLSS-RS iteration 3: Global Deviance = 1961.514 
+## GAMLSS-RS iteration 4: Global Deviance = 1961.513</code></pre>
+</div>
+<div id="comparação-aic" class="section level3">
+<h3>Comparação AIC</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">GAIC</span>(ajustePO, ajusteNB1, ajusteNB2, ajusteNB3, <span class="dt">k =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##           df      AIC
+## ajusteNB2  7 1975.893
+## ajusteNB3  8 1977.513
+## ajusteNB1  5 2002.048
+## ajustePO   4 2115.696</code></pre>
+<p>O ajuste do modelo2 proporciona menor valor de AIC.</p>
+</div>
+<div id="teste-razão-verossimilhanças" class="section level3">
+<h3>Teste Razão Verossimilhanças</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">LR.test</span>(ajusteNB2, ajusteNB3)</span></code></pre></div>
+<pre><code>##  Likelihood Ratio Test for nested GAMLSS models. 
+##  (No check whether the models are nested is performed). 
+##  
+##        Null model: deviance= 1961.893 with  7 deg. of freedom 
+##  Altenative model: deviance= 1961.513 with  8 deg. of freedom 
+##  
+##  LRT = 0.3793656 with 1 deg. of freedom and p-value= 0.537943</code></pre>
+<p>O teste da razão de verossimilhanças não indica diferença significativa dos ajustes dos dois modelos. Logo, devemos optar pelo modelo mais simples, sem a covariável “Time” no parâmetro de escala.</p>
+</div>
+<div id="plot-nb2" class="section level3">
+<h3>Plot NB2</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">plot</span>(ajusteNB2)</span></code></pre></div>
+<p><img src="mod3_2_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<pre><code>## ******************************************************************
+##   Summary of the Randomised Quantile Residuals
+##                            mean   =  -0.01719265 
+##                        variance   =  1.02911 
+##                coef. of skewness  =  -0.02508728 
+##                coef. of kurtosis  =  3.220703 
+## Filliben correlation coefficient  =  0.9989265 
+## ******************************************************************</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">wp</span>(ajusteNB2)</span></code></pre></div>
+<p><img src="mod3_2_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
+<p>O modelo produz ajuste satisfatório.</p>
+<p>Como o ajuste de um GAMLSS pode envolver até quatro parâmetros, (mu, sigma, nu e tau) as predições podem ser aplicadas a qualquer um deles.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">summary</span>(ajusteNB2)</span></code></pre></div>
+<pre><code>## ******************************************************************
+## Family:  c(&quot;NBI&quot;, &quot;Negative Binomial type I&quot;) 
+## 
+## Call:  gamlss(formula = Shots ~ Position + Time, sigma.formula = ~Position,  
+##     family = NBI, data = dados) 
+## 
+## Fitting method: RS() 
+## 
+## ------------------------------------------------------------------
+## Mu link function:  log
+## Mu Coefficients:
+##                      Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)        -1.2990325  0.1188140 -10.933  &lt; 2e-16 ***
+## PositionForward     1.5638282  0.1058679  14.772  &lt; 2e-16 ***
+## PositionMidfielder  0.9642620  0.1178274   8.184 1.91e-15 ***
+## Time                0.0051999  0.0002569  20.243  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## Sigma link function:  log
+## Sigma Coefficients:
+##                    Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)         -0.4389     0.2526  -1.737 0.082890 .  
+## PositionForward     -2.5369     0.6680  -3.798 0.000162 ***
+## PositionMidfielder  -0.2130     0.3147  -0.677 0.498846    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## ------------------------------------------------------------------
+## No. of observations in the fit:  559 
+## Degrees of Freedom for the fit:  7
+##       Residual Deg. of Freedom:  552 
+##                       at cycle:  4 
+##  
+## Global Deviance:     1961.893 
+##             AIC:     1975.893 
+##             SBC:     2006.176 
+## ******************************************************************</code></pre>
+<p>Vamos criar uma nova base para predição. Considere jogadores com as seguintes covariáveis.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>ndados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Position =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&#39;Defender&#39;</span>, <span class="st">&#39;Forward&#39;</span>, <span class="st">&#39;Midfielder&#39;</span>), <span class="dt">each =</span> <span class="dv">3</span>),</span>
+<span id="cb26-2"><a href="#cb26-2"></a>                                    <span class="dt">Time =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">400</span>), <span class="dt">times =</span> <span class="dv">3</span>))</span></code></pre></div>
+</div>
+<div id="valores-ajustados-de-mu-na-escala-do-preditor" class="section level3">
+<h3>Valores ajustados de mu na escala do preditor</h3>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="kw">predict</span>(ajusteNB2, <span class="dt">newdata =</span> ndados, <span class="dt">what =</span> <span class="st">&#39;mu&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] -0.7790393 -0.2590461  0.7809404  0.7847890  1.3047822  2.3447686  0.1852227
+## [8]  0.7052159  1.7452024</code></pre>
+</div>
+<div id="valores-ajustados-de-mu-na-escala-da-resposta" class="section level3">
+<h3>Valores ajustados de mu na escala da resposta</h3>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>pmu &lt;-<span class="st"> </span><span class="kw">predict</span>(ajusteNB2, <span class="dt">newdata =</span> ndados, <span class="dt">what =</span> <span class="st">&#39;mu&#39;</span>, <span class="dt">type =</span> <span class="st">&#39;response&#39;</span>)</span>
+<span id="cb29-2"><a href="#cb29-2"></a>pmu &lt;-<span class="st"> </span><span class="kw">round</span>(pmu, <span class="dv">3</span>)</span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="kw">data.frame</span>(ndados, pmu)</span></code></pre></div>
+<pre><code>##     Position Time    pmu
+## 1   Defender  100  0.459
+## 2   Defender  200  0.772
+## 3   Defender  400  2.184
+## 4    Forward  100  2.192
+## 5    Forward  200  3.687
+## 6    Forward  400 10.431
+## 7 Midfielder  100  1.203
+## 8 Midfielder  200  2.024
+## 9 Midfielder  400  5.727</code></pre>
+</div>
+<div id="valores-ajustados-de-sigma-na-escala-do-preditor" class="section level3">
+<h3>Valores ajustados de sigma na escala do preditor</h3>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="kw">predict</span>(ajusteNB2, <span class="dt">newdata =</span> ndados, <span class="dt">what =</span> <span class="st">&#39;sigma&#39;</span>)</span></code></pre></div>
+<pre><code>## [1] -0.4389321 -0.4389321 -0.4389321 -2.9758064 -2.9758064 -2.9758064 -0.6519116
+## [8] -0.6519116 -0.6519116</code></pre>
+</div>
+<div id="valores-ajustados-de-sigma-na-escala-da-resposta" class="section level3">
+<h3>Valores ajustados de sigma na escala da resposta</h3>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>ps &lt;-<span class="st"> </span><span class="kw">predict</span>(ajusteNB2, <span class="dt">newdata =</span> ndados, <span class="dt">what =</span> <span class="st">&#39;sigma&#39;</span>, <span class="dt">type =</span> <span class="st">&#39;response&#39;</span>)</span>
+<span id="cb33-2"><a href="#cb33-2"></a>ps &lt;-<span class="st"> </span><span class="kw">round</span>(ps, <span class="dv">3</span>)</span>
+<span id="cb33-3"><a href="#cb33-3"></a>ps</span></code></pre></div>
+<pre><code>## [1] 0.645 0.645 0.645 0.051 0.051 0.051 0.521 0.521 0.521</code></pre>
+<p>Vamos estimar a probabilidade de se ter ao menos um chute a gol para cada um dos nove casos (combinações de posição e tempo).</p>
+<p>Valores acima de zero.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>p1m &lt;-<span class="st"> </span><span class="kw">pNBI</span>(<span class="dt">q =</span> <span class="dv">0</span>, <span class="dt">mu =</span> pmu, <span class="dt">sigma =</span> ps, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb35-2"><a href="#cb35-2"></a>p1m &lt;-<span class="st"> </span><span class="kw">round</span>(p1m, <span class="dv">3</span>)</span>
+<span id="cb35-3"><a href="#cb35-3"></a>p1m</span></code></pre></div>
+<pre><code>## [1] 0.331 0.466 0.744 0.875 0.966 1.000 0.607 0.749 0.930</code></pre>
+<p>Agora, vamos calcular a probabilidade de cinco chutes ou mais, em cada caso.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>p5m &lt;-<span class="st"> </span><span class="kw">pNBI</span>(<span class="dt">q =</span> <span class="dv">4</span>, <span class="dt">mu =</span> pmu, <span class="dt">sigma =</span> ps, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb37-2"><a href="#cb37-2"></a>p5m &lt;-<span class="st"> </span><span class="kw">round</span>(p5m, <span class="dv">3</span>)</span>
+<span id="cb37-3"><a href="#cb37-3"></a>p5m</span></code></pre></div>
+<pre><code>## [1] 0.002 0.010 0.140 0.082 0.315 0.950 0.032 0.114 0.509</code></pre>
+<p>Concatenando os resultados.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="kw">data.frame</span>(ndados, pmu, ps, p1m, p5m)</span></code></pre></div>
+<pre><code>##     Position Time    pmu    ps   p1m   p5m
+## 1   Defender  100  0.459 0.645 0.331 0.002
+## 2   Defender  200  0.772 0.645 0.466 0.010
+## 3   Defender  400  2.184 0.645 0.744 0.140
+## 4    Forward  100  2.192 0.051 0.875 0.082
+## 5    Forward  200  3.687 0.051 0.966 0.315
+## 6    Forward  400 10.431 0.051 1.000 0.950
+## 7 Midfielder  100  1.203 0.521 0.607 0.032
+## 8 Midfielder  200  2.024 0.521 0.749 0.114
+## 9 Midfielder  400  5.727 0.521 0.930 0.509</code></pre>
+<p>Vamos plotar a função de probabilidade estimada para os nove casos.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="kw">par</span>(<span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>), <span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
+<span id="cb41-2"><a href="#cb41-2"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">9</span>)</span>
+<span id="cb41-3"><a href="#cb41-3"></a>    <span class="kw">plot</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">25</span>, <span class="kw">dNBI</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">25</span>, <span class="dt">mu =</span> pmu[i], <span class="dt">sigma =</span> ps[i]), <span class="dt">type =</span> <span class="st">&#39;h&#39;</span>, <span class="dt">xlab =</span> <span class="st">&#39;Shots&#39;</span>,</span>
+<span id="cb41-4"><a href="#cb41-4"></a>         <span class="dt">ylab =</span> <span class="st">&#39;Probabilidade&#39;</span>, <span class="dt">lwd =</span> <span class="fl">1.5</span>, <span class="dt">cex.lab =</span> <span class="fl">1.4</span>, <span class="dt">cex.axis =</span> <span class="fl">1.4</span>,</span>
+<span id="cb41-5"><a href="#cb41-5"></a>         <span class="dt">main =</span> <span class="kw">paste</span>(<span class="st">&#39;Caso&#39;</span>,i))</span></code></pre></div>
+<p><img src="mod3_2_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p>Agora vamos extrair também os erros padrões correspondentes às predições. O pacote gamlss ainda não permite obter erros padrões para observações que não estão na base. Vamos resolver isso aumentando a base com os dados de predição. No ajuste do modelo daremos peso zero a tais observações.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>dados_ajuste &lt;-<span class="st"> </span>dados[,<span class="kw">c</span>(<span class="st">&#39;Shots&#39;</span>, <span class="st">&#39;Position&#39;</span>, <span class="st">&#39;Time&#39;</span>)]</span></code></pre></div>
+<p>Selecionando apenas as variáveis usadas na análise.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>dados_predic &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dv">1</span>, ndados)</span></code></pre></div>
+<p>Novos dados acrescentados de um vetor de uns para a resposta (poderia ser qualquer outro valor, não será usado para ajuste ou predição).</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="kw">names</span>(dados_predic)[<span class="dv">1</span>] &lt;-<span class="st"> &#39;Shots&#39;</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>dados_aument &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">rbind</span>(dados_ajuste,dados_predic))</span>
+<span id="cb44-3"><a href="#cb44-3"></a><span class="kw">tail</span>(dados_aument, <span class="dv">15</span>)</span></code></pre></div>
+<pre><code>##                 Shots   Position Time
+## van Bommel          2 Midfielder  540
+## van Bronckhorst     1   Defender  540
+## van Persie         14    Forward  479
+## von Bergen          0   Defender  234
+## Alvaro Pereira      6 Midfielder  409
+## Ozil                7 Midfielder  497
+## 1                   1   Defender  100
+## 2                   1   Defender  200
+## 3                   1   Defender  400
+## 4                   1    Forward  100
+## 5                   1    Forward  200
+## 6                   1    Forward  400
+## 7                   1 Midfielder  100
+## 8                   1 Midfielder  200
+## 9                   1 Midfielder  400</code></pre>
+<p>Concatenando os dados de ajuste e de predição por linhas. Nas linhas 1 a 559 estão os dados de ajuste; nas linhas 560 a 568 os de predição.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>pesos &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">559</span>), <span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">9</span>))</span>
+<span id="cb46-2"><a href="#cb46-2"></a>pesos</span></code></pre></div>
+<pre><code>##   [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+##  [38] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+##  [75] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [112] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [149] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [186] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [223] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [260] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [297] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [334] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [371] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [408] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [445] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [482] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [519] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+## [556] 1 1 1 1 0 0 0 0 0 0 0 0 0</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>dados_aument<span class="op">$</span>pesos &lt;-<span class="st"> </span>pesos</span></code></pre></div>
+<p>Vetor de pesos.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>ajusteNB2_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">gamlss</span>(Shots <span class="op">~</span><span class="st"> </span>Position <span class="op">+</span><span class="st"> </span>Time, <span class="dt">sigma.fo =</span><span class="op">~</span><span class="st"> </span>Position, </span>
+<span id="cb49-2"><a href="#cb49-2"></a>                    <span class="dt">data =</span> dados_aument, <span class="dt">family =</span> NBI, <span class="dt">weights =</span> pesos)</span></code></pre></div>
+<pre><code>## GAMLSS-RS iteration 1: Global Deviance = 1964.539 
+## GAMLSS-RS iteration 2: Global Deviance = 1961.897 
+## GAMLSS-RS iteration 3: Global Deviance = 1961.893 
+## GAMLSS-RS iteration 4: Global Deviance = 1961.893</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>ajusteNB2_<span class="dv">2</span></span></code></pre></div>
+<pre><code>## 
+## Family:  c(&quot;NBI&quot;, &quot;Negative Binomial type I&quot;) 
+## Fitting method: RS() 
+## 
+## Call:  gamlss(formula = Shots ~ Position + Time, sigma.formula = ~Position,  
+##     family = NBI, data = dados_aument, weights = pesos) 
+## 
+## Mu Coefficients:
+##        (Intercept)     PositionForward  PositionMidfielder                Time  
+##            -1.2990              1.5638              0.9643              0.0052  
+## Sigma Coefficients:
+##        (Intercept)     PositionForward  PositionMidfielder  
+##            -0.4389             -2.5369             -0.2130  
+## 
+##  Degrees of Freedom for the fit: 7 Residual Deg. of Freedom   552 
+## Global Deviance:     1961.89 
+##             AIC:     1975.89 
+##             SBC:     2006.18</code></pre>
+<p>Observe que o modelo ajustado é idêntico ao obtido anteriormente.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>pred_se &lt;-<span class="st"> </span><span class="kw">predict</span>(ajusteNB2_<span class="dv">2</span>, <span class="dt">what =</span> <span class="st">&#39;mu&#39;</span>, <span class="dt">type =</span> <span class="st">&#39;link&#39;</span>, <span class="dt">se.fit =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>pred1 &lt;-<span class="st"> </span>pred_se<span class="op">$</span>fit[<span class="dv">560</span><span class="op">:</span><span class="dv">568</span>] </span>
+<span id="cb54-2"><a href="#cb54-2"></a>pred1 <span class="co"># Estimativas na escala da ligação.</span></span></code></pre></div>
+<pre><code>##          1          2          3          4          5          6          7 
+## -0.7790393 -0.2590460  0.7809404  0.7847889  1.3047821  2.3447686  0.1852227 
+##          8          9 
+##  0.7052160  1.7452025</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>erros1 &lt;-<span class="st"> </span>pred_se<span class="op">$</span>se.fit[<span class="dv">560</span><span class="op">:</span><span class="dv">568</span>] </span>
+<span id="cb56-2"><a href="#cb56-2"></a>erros1 <span class="co"># Erros padrões na escala da ligação.</span></span></code></pre></div>
+<pre><code>##          1          2          3          4          5          6          7 
+## 0.10427284 0.09617098 0.09648631 0.06029163 0.04939617 0.05795234 0.07532561 
+##          8          9 
+## 0.06841154 0.07746751</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>pred_se2 &lt;-<span class="st"> </span><span class="kw">predict</span>(ajusteNB2_<span class="dv">2</span>, <span class="dt">what =</span> <span class="st">&#39;mu&#39;</span>, <span class="dt">type =</span> <span class="st">&#39;response&#39;</span>, <span class="dt">se.fit =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>pred2 &lt;-<span class="st"> </span>pred_se2<span class="op">$</span>fit[<span class="dv">560</span><span class="op">:</span><span class="dv">568</span>] </span>
+<span id="cb59-2"><a href="#cb59-2"></a>pred2 <span class="co">### Estimativas na escala da resposta.</span></span></code></pre></div>
+<pre><code>##          1          2          3          4          5          6          7 
+##  0.4588466  0.7717875  2.1835248  2.1919441  3.6868857 10.4308587  1.2034865 
+##          8          9 
+##  2.0242838  5.7270609</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>erros2 &lt;-<span class="st"> </span>pred_se2<span class="op">$</span>se.fit[<span class="dv">560</span><span class="op">:</span><span class="dv">568</span>] </span>
+<span id="cb61-2"><a href="#cb61-2"></a>erros2 <span class="co">### Erros padrões na escala da resposta.</span></span></code></pre></div>
+<pre><code>##          1          2          3          4          5          6          7 
+## 0.04784524 0.07422356 0.21068025 0.13215589 0.18211802 0.60449265 0.09065335 
+##          8          9 
+## 0.13848438 0.44366113</code></pre>
+<p>Erros padrões na escala da resposta são aproximados via método delta, caso a função de ligação seja outra que não a identidade. Nesse caso, esses valores devem ser usados com cautela.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="kw">head</span>(<span class="kw">predict</span>(ajusteNB2, <span class="dt">type =</span> <span class="st">&#39;terms&#39;</span>), <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##              Position       Time
+## Abdoun      0.1709182 -0.9673641
+## Abe         0.1709182  0.7746132
+## Abidal     -0.7933438 -0.1145752
+## Abou Diaby  0.1709182  0.3534186
+## Aboubakar   0.7704845 -0.8113662
+## Abreu       0.7704845 -0.6761679
+## Addy       -0.7933438 -0.3329724
+## Adiyiah     0.7704845 -0.8789653
+## Afellay     0.1709182 -0.9413645
+## Afolabi    -0.7933438 -0.5149700</code></pre>
+<p>Com type = ‘terms’ temos a contribuição de cada variável na resposta.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="kw">predictAll</span>(ajusteNB2, <span class="dt">newdata =</span> ndados, <span class="dt">type =</span> <span class="st">&#39;link&#39;</span>)</span></code></pre></div>
+<pre><code>## $mu
+## [1] -0.7790393 -0.2590461  0.7809404  0.7847890  1.3047822  2.3447686  0.1852227
+## [8]  0.7052159  1.7452024
+## 
+## $sigma
+## [1] -0.4389321 -0.4389321 -0.4389321 -2.9758064 -2.9758064 -2.9758064 -0.6519116
+## [8] -0.6519116 -0.6519116
+## 
+## attr(,&quot;family&quot;)
+## [1] &quot;NBI&quot;                      &quot;Negative Binomial type I&quot;</code></pre>
+<p>A função predictALL retorna as predições para cada parâmetro do modelo.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="kw">predictAll</span>(ajusteNB2, <span class="dt">newdata =</span> ndados, <span class="dt">type =</span> <span class="st">&#39;response&#39;</span>)</span></code></pre></div>
+<pre><code>## $mu
+## [1]  0.4588466  0.7717875  2.1835246  2.1919443  3.6868859 10.4308588  1.2034865
+## [8]  2.0242838  5.7270604
+## 
+## $sigma
+## [1] 0.64472456 0.64472456 0.64472456 0.05100629 0.05100629 0.05100629 0.52104881
+## [8] 0.52104881 0.52104881
+## 
+## attr(,&quot;family&quot;)
+## [1] &quot;NBI&quot;                      &quot;Negative Binomial type I&quot;</code></pre>
+<p>Agora na escala da resposta.</p>
+<p>Agora, vamos usar simulação bootstrap para avaliar os erros padrões e construir intervalos de confiança. Usaremos duas abordagens: paramétrica (simulando valores para a resposta com base no modelo ajustado, substituindo os parâmetros pelas respectivas estimativas) e outra não paramétrica (reamostrando com reposição as observações da base).</p>
+<p>NOTA: SIMULAÇÂO LEVA TEMPO, PARA ILUSTRAÇÃO TROCAR R = 999 por R = 99.</p>
+</div>
+<div id="bootstrap-paramétrico" class="section level3">
+<h3>Bootstrap paramétrico</h3>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>fit_nb &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Time =</span> dados<span class="op">$</span>Time, <span class="dt">Position =</span> dados<span class="op">$</span>Position, </span>
+<span id="cb69-2"><a href="#cb69-2"></a>                     <span class="dt">fit_mu  =</span> <span class="kw">fitted</span>(ajusteNB2), </span>
+<span id="cb69-3"><a href="#cb69-3"></a>                     <span class="dt">fit_sigma =</span> <span class="kw">fitted</span>(ajusteNB2, <span class="dt">parameter =</span> <span class="st">&#39;sigma&#39;</span>))</span></code></pre></div>
+<p>Base auxiliar, com as observações originais e as estimativas de mu e sigma produzidas pelo modelo.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="kw">head</span>(fit_nb)</span></code></pre></div>
+<pre><code>##            Time   Position    fit_mu  fit_sigma
+## Abdoun       16 Midfielder 0.7775778 0.52104881
+## Abe         351 Midfielder 4.4388960 0.52104881
+## Abidal      180   Defender 0.6955553 0.64472456
+## Abou Diaby  270 Midfielder 2.9130807 0.52104881
+## Aboubakar    46    Forward 1.6553171 0.05100629
+## Abreu        72    Forward 1.8949470 0.05100629</code></pre>
+<p>A função boot_nb1 será usada para a simulação. A cada rodada, simulamos novos valores para a resposta para cada observação da base e ajustamos o modelo para os dados simulados. Ao final de cada iteração extraímos as estimativas.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>boot_nb1 &lt;-<span class="st"> </span><span class="cf">function</span>(datab, i){</span>
+<span id="cb72-2"><a href="#cb72-2"></a></span>
+<span id="cb72-3"><a href="#cb72-3"></a>datab<span class="op">$</span>Shots &lt;-<span class="st"> </span><span class="kw">rNBI</span>(<span class="dt">n =</span> <span class="kw">nrow</span>(datab), </span>
+<span id="cb72-4"><a href="#cb72-4"></a>                      <span class="dt">mu =</span> datab<span class="op">$</span>fit_mu, </span>
+<span id="cb72-5"><a href="#cb72-5"></a>                      <span class="dt">sigma =</span> datab<span class="op">$</span>fit_sigma)</span>
+<span id="cb72-6"><a href="#cb72-6"></a>  </span>
+<span id="cb72-7"><a href="#cb72-7"></a>ajusteboot &lt;-<span class="st"> </span><span class="kw">gamlss</span>(Shots <span class="op">~</span><span class="st"> </span>Position <span class="op">+</span><span class="st"> </span>Time, <span class="dt">sigma.fo =</span><span class="op">~</span><span class="st"> </span>Position,</span>
+<span id="cb72-8"><a href="#cb72-8"></a>                       <span class="dt">data =</span> datab, </span>
+<span id="cb72-9"><a href="#cb72-9"></a>                       <span class="dt">family =</span> NBI, </span>
+<span id="cb72-10"><a href="#cb72-10"></a>                       <span class="dt">method =</span> <span class="kw">RS</span>(<span class="dv">100</span>), </span>
+<span id="cb72-11"><a href="#cb72-11"></a>                       <span class="dt">c.crit =</span> <span class="fl">0.001</span>, <span class="dt">start.from =</span> ajusteNB2)</span>
+<span id="cb72-12"><a href="#cb72-12"></a>  </span>
+<span id="cb72-13"><a href="#cb72-13"></a>estimativas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">coef</span>(ajusteboot), </span>
+<span id="cb72-14"><a href="#cb72-14"></a>                   <span class="kw">coef</span>(ajusteboot, </span>
+<span id="cb72-15"><a href="#cb72-15"></a>                        <span class="dt">parameter =</span> <span class="st">&#39;sigma&#39;</span>))</span>
+<span id="cb72-16"><a href="#cb72-16"></a>estimativas</span>
+<span id="cb72-17"><a href="#cb72-17"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="kw">plot</span>(b1, <span class="dt">index =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p><img src="mod3_2_files/figure-html/40-1.png" width="672" /></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="kw">boot.ci</span>(b1, <span class="dt">type =</span> <span class="st">&#39;perc&#39;</span>, <span class="dt">index =</span> <span class="dv">3</span>) <span class="co">### IC do tipo percentil</span></span></code></pre></div>
+<pre><code>## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+## Based on 99 bootstrap replicates
+## 
+## CALL : 
+## boot.ci(boot.out = b1, type = &quot;perc&quot;, index = 3)
+## 
+## Intervals : 
+## Level     Percentile     
+## 95%   ( 0.7319,  1.2058 )  
+## Calculations and Intervals on Original Scale
+## Some percentile intervals may be unstable</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="kw">confint</span>(ajusteNB2)[<span class="dv">3</span>,] <span class="co">### IC Wald</span></span></code></pre></div>
+<pre><code>##     2.5 %    97.5 % 
+## 0.7333246 1.1951994</code></pre>
+</div>
+<div id="bootstrap-não-paramétrico" class="section level3">
+<h3>Bootstrap não paramétrico</h3>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a>fit_nb2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Time =</span> dados<span class="op">$</span>Time, <span class="dt">Position =</span> dados<span class="op">$</span>Position,</span>
+<span id="cb78-2"><a href="#cb78-2"></a>                       <span class="dt">Shots =</span> dados<span class="op">$</span>Shots)</span></code></pre></div>
+</div>
+<div id="base-de-dados-auxiliar." class="section level3">
+<h3>Base de dados auxiliar.</h3>
+<p>A função boot_nb2 será usada para a simulação. A cada rodada, simulamos novas linhas para a base reamostrando, com reposição, as linhas da base original, e ajustamos o modelo para os dados simulados. Ao final de cada iteração extraímos as estimativas.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a> boot_nb2 &lt;-<span class="st"> </span><span class="cf">function</span>(datab, i){</span>
+<span id="cb79-2"><a href="#cb79-2"></a>     datab &lt;-<span class="st"> </span>datab[i,]</span>
+<span id="cb79-3"><a href="#cb79-3"></a>     ajusteboot &lt;-<span class="st"> </span><span class="kw">gamlss</span>(Shots <span class="op">~</span><span class="st"> </span>Position <span class="op">+</span><span class="st"> </span>Time, <span class="dt">sigma.fo =</span><span class="op">~</span><span class="st"> </span>Position, </span>
+<span id="cb79-4"><a href="#cb79-4"></a>                          <span class="dt">data =</span> datab,</span>
+<span id="cb79-5"><a href="#cb79-5"></a>                          <span class="dt">family =</span> NBI, </span>
+<span id="cb79-6"><a href="#cb79-6"></a>                          <span class="dt">method =</span> <span class="kw">RS</span>(<span class="dv">100</span>), </span>
+<span id="cb79-7"><a href="#cb79-7"></a>                          <span class="dt">c.crit =</span> <span class="fl">0.001</span>, </span>
+<span id="cb79-8"><a href="#cb79-8"></a>                          <span class="dt">start.from =</span> ajusteNB2)</span>
+<span id="cb79-9"><a href="#cb79-9"></a>     </span>
+<span id="cb79-10"><a href="#cb79-10"></a>estimativas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">coef</span>(ajusteboot), </span>
+<span id="cb79-11"><a href="#cb79-11"></a>                 <span class="kw">coef</span>(ajusteboot, </span>
+<span id="cb79-12"><a href="#cb79-12"></a>              <span class="dt">parameter =</span> <span class="st">&#39;sigma&#39;</span>))</span>
+<span id="cb79-13"><a href="#cb79-13"></a>estimativas</span>
+<span id="cb79-14"><a href="#cb79-14"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a> <span class="kw">plot</span>(b2, <span class="dt">index =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p><img src="mod3_2_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a> <span class="kw">boot.ci</span>(b2, <span class="dt">type =</span> <span class="st">&#39;perc&#39;</span>, <span class="dt">index =</span> <span class="dv">3</span>) <span class="co"># IC do tipo percentil</span></span></code></pre></div>
+<pre><code>## BOOTSTRAP CONFIDENCE INTERVAL CALCULATIONS
+## Based on 99 bootstrap replicates
+## 
+## CALL : 
+## boot.ci(boot.out = b2, type = &quot;perc&quot;, index = 3)
+## 
+## Intervals : 
+## Level     Percentile     
+## 95%   ( 0.7658,  1.2477 )  
+## Calculations and Intervals on Original Scale
+## Some percentile intervals may be unstable</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a> <span class="kw">confint</span>(ajusteNB2)[<span class="dv">3</span>,] <span class="co">### IC Wald</span></span></code></pre></div>
+<pre><code>##     2.5 %    97.5 % 
+## 0.7333246 1.1951994</code></pre>
+<p>Vamos comparar os erros padrões extraídos da matriz de covariâncias, os erros padrões robustos e aqueles obtidos via bootstrap paramétrico e não paramétrico.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a> <span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">5</span>)</span>
+<span id="cb85-2"><a href="#cb85-2"></a> <span class="kw">round</span>(<span class="kw">data.frame</span>(<span class="dt">VCOV =</span> <span class="kw">vcov</span>(ajusteNB2, <span class="dt">type =</span> <span class="st">&#39;se&#39;</span>),</span>
+<span id="cb85-3"><a href="#cb85-3"></a>                  <span class="dt">VCOV_rb =</span> <span class="kw">vcov</span>(ajusteNB2, <span class="dt">type =</span> <span class="st">&#39;se&#39;</span>, <span class="dt">robust =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb85-4"><a href="#cb85-4"></a>                  <span class="dt">BOOTP =</span> <span class="kw">apply</span>(b1<span class="op">$</span>t, <span class="dv">2</span>, sd),</span>
+<span id="cb85-5"><a href="#cb85-5"></a>                  <span class="dt">BOOTNP =</span> <span class="kw">apply</span>(b2<span class="op">$</span>t, <span class="dv">2</span>, sd)),<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##      VCOV VCOV_rb    BOOTP  BOOTNP
+## 1 0.11881 0.12500  0.11637 0.11893
+## 2 0.10587 0.11236  0.11212 0.12043
+## 3 0.11783 0.12336  0.11136 0.13034
+## 4 0.00026 0.00027  0.00025 0.00021
+## 5 0.25265 0.27226  0.32571 0.31284
+## 6 0.66796 0.59338 23.76023 4.73279
+## 7 0.31471 0.32827  0.41088 0.36000</code></pre>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

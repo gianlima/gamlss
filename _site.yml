@@ -16,6 +16,11 @@ navbar:
         href: Caderno.html
       - text: "Conteúdo"
         href: exemplo_inicial.html
+      - text: "Módulo 3"
+      - text: "Módulo 3 - Parte 1"
+        href: mod3_1.html
+      - text: "Módulo 3 - Parte 1"
+        href: mod3_2.html
         
         
         

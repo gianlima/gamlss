@@ -441,6 +441,13 @@ div.tocify {
     <li>
       <a href="exemplo_inicial.html">Conteúdo</a>
     </li>
+    <li class="dropdown-header">Módulo 3</li>
+    <li>
+      <a href="mod3_1.html">Módulo 3 - Parte 1</a>
+    </li>
+    <li>
+      <a href="mod3_2.html">Módulo 3 - Parte 1</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -461,13 +468,13 @@ div.tocify {
 
 
 <p>Este exemplo tem por objetivo motivar o uso de GAMLSS e apresentar alguns recursos implementados no pacote gamlss.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">require</span>(gamlss) <span class="co">### Carregando o pacote gamlss.</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">require</span>(gamlss) <span class="co"># Carregando o pacote gamlss.</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">require</span>(gamlss.demo)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="kw">options</span>(<span class="dt">device =</span> <span class="st">&#39;x11&#39;</span>)</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">data</span>(rent) <span class="co">### Dados sobre aluguéis de imóveis em Munique, 1980.</span></span></code></pre></div>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">data</span>(rent) <span class="co"># Dados sobre aluguéis de imóveis em Munique, 1980.</span></span></code></pre></div>
 <p>Vamos considerar para a análise o valor do aluguel dos imóveis (R)além de quatro covariáveis: Fl, A, H e loc.</p>
-<div id="análise-exploratória" class="section level4">
-<h4>Análise exploratória</h4>
+<div id="análise-exploratória" class="section level2">
+<h2>Análise exploratória</h2>
 <p>Inicialmente, vamos construir alguns gráficos para explorar as relações entre as variáveis.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">las =</span> <span class="dv">1</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw">plot</span>(R <span class="op">~</span><span class="st"> </span>Fl, <span class="dt">data =</span> rent, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</span>
@@ -482,8 +489,8 @@ div.tocify {
 <li><p>Finalmente, os preços de aluguel apresentam maior mediana para a região “acima da média”, seguida pelas regiões “na média” e “abaixo da média”. Nota-se, novamente, assimetria nas distribuições dos preços de aluguel em cada grupo e variância não constante.</p></li>
 </ul>
 </div>
-<div id="modelo-1-modelo-linear" class="section level4">
-<h4>Modelo 1: Modelo Linear</h4>
+<div id="modelo-1-modelo-linear" class="section level2">
+<h2>Modelo 1: Modelo Linear</h2>
 <p>Todos os modelos serão ajustados usando a função gamlss da biblioteca gamlss. Antes de mais nada, vamos consultar sua documentação.</p>
 <p>Para ajustar o modelo de regressão linear, precisamos especificar a família normal (NO).</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>mod1 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span>Fl <span class="op">+</span><span class="st"> </span>A <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc, <span class="dt">family =</span> NO, <span class="dt">data =</span> rent)</span></code></pre></div>
@@ -570,8 +577,8 @@ div.tocify {
 <p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Podemos notar que os resíduos aumentam (em média) a partir de 1960. O termo linear, considerado no ajuste do modelo, parece não ser suficiente para explicar a relação entre os preços de aluguel e o ano de construção do imóvel.</p>
 </div>
-<div id="modelo-2-modelo-linear-generalizado" class="section level4">
-<h4>Modelo 2: Modelo Linear Generalizado</h4>
+<div id="modelo-2-modelo-linear-generalizado" class="section level2">
+<h2>Modelo 2: Modelo Linear Generalizado</h2>
 <p>Ajuste de um modelo linear generalizado com resposta gamma.</p>
 <p>O objetivo aqui é acomodar a assimetria nos dados e variância não constante no ajuste do modelo.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>mod2 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span>Fl <span class="op">+</span><span class="st"> </span>A <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc, <span class="dt">family =</span> GA, <span class="dt">data =</span> rent)</span></code></pre></div>
@@ -652,8 +659,8 @@ div.tocify {
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="kw">wp</span>(mod2, <span class="dt">ylim.all =</span> <span class="fl">0.8</span>)</span></code></pre></div>
 <p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 </div>
-<div id="modelo-3-modelo-generalizado-aditivo-gam" class="section level4">
-<h4>Modelo 3 : Modelo Generalizado Aditivo (GAM)</h4>
+<div id="modelo-3-modelo-generalizado-aditivo-gam" class="section level2">
+<h2>Modelo 3 : Modelo Generalizado Aditivo (GAM)</h2>
 <p>Ajuste de um modelo linear generalizado com resposta gamma e funções suaves para as variáveis numéricas (Fl e A).</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>mod3 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc, <span class="dt">family =</span> GA, <span class="dt">data =</span> rent)</span></code></pre></div>
 <pre><code>## GAMLSS-RS iteration 1: Global Deviance = 27683.22 
@@ -754,8 +761,8 @@ div.tocify {
 <p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>Podemos observar que os pontos não estão dispersos conforme o esperado, com acentuada curvatura na parte esquerda do gráfico.</p>
 </div>
-<div id="modelo-4-modelo-generalizado-aditivo-duplo-gamma" class="section level4">
-<h4>Modelo 4: Modelo Generalizado Aditivo Duplo Gamma</h4>
+<div id="modelo-4-modelo-generalizado-aditivo-duplo-gamma" class="section level2">
+<h2>Modelo 4: Modelo Generalizado Aditivo Duplo Gamma</h2>
 <p>Ajuste de um modelo linear generalizado com funções suaves para as variáveis numéricas (Fl e A) e inclusão de covariáveis para o parâmetro de dispersão.</p>
 <p>Vamos testar duas distribuições: gamma e normal inversa. Primeiro a distribuição Gamma.</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>mod4 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc,</span>
@@ -776,8 +783,8 @@ div.tocify {
 <p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <p>Gráfico de efeitos para o parâmetro de escala (dispersão). Observa-se efeito claramente não linear de Fl e A na dispersão. Além disso, maior efeito é verificado para casas com localização 1, seguida pelas localizações II e III.</p>
 </div>
-<div id="modelo-5-modelo-generalizado-aditivo-duplo-normal-inversa" class="section level4">
-<h4>Modelo 5: Modelo Generalizado Aditivo Duplo Normal Inversa</h4>
+<div id="modelo-5-modelo-generalizado-aditivo-duplo-normal-inversa" class="section level2">
+<h2>Modelo 5: Modelo Generalizado Aditivo Duplo Normal Inversa</h2>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>mod5 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc,</span>
 <span id="cb53-2"><a href="#cb53-2"></a>               <span class="dt">sigma.fo =</span><span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc,</span>
 <span id="cb53-3"><a href="#cb53-3"></a>                <span class="dt">family =</span> IG, <span class="dt">data =</span> rent)</span></code></pre></div>
@@ -832,29 +839,30 @@ div.tocify {
 <p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 <p>O gráfico não reflete um ajuste satisfatório, com padrão na forma de U invertido.</p>
 </div>
-<div id="modelo-6-e-7-modelo-generalizado-aditivo-para-locação-escala-e-forma" class="section level4">
-<h4>Modelo 6 e 7 : Modelo Generalizado aditivo para locação, escala e forma</h4>
+<div id="modelo-6-e-7-modelo-generalizado-aditivo-para-locação-escala-e-forma" class="section level2">
+<h2>Modelo 6 e 7 : Modelo Generalizado aditivo para locação, escala e forma</h2>
 <p>Ajuste de um modelo generalizado aditivo para locação, escala e forma com resposta Box-Cox Cole and Green.</p>
 <p>A família gamlss compreende diversas distribuições, com até quatro parâmetros, que permitem modelar dados com diferentes níveis de dispersão, assimetria e curtose. Nesta aplicação vamos considerar a distribuição Box-Cox Cole and Green (BCCGo).</p>
 <p>Vamos considerar a distribuição BCCGo com parâmetros <span class="math inline">\(\mu\)</span> = 1, sigma = 0.1, <span class="math inline">\(\nu\)</span> = 2.5.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="kw">dBCCGo</span>(<span class="dt">x =</span> <span class="fl">1.2</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>) <span class="co">### f(1.2)</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="kw">dBCCGo</span>(<span class="dt">x =</span> <span class="fl">1.2</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>) <span class="co"># f(1.2)</span></span></code></pre></div>
 <pre><code>## [1] 0.3640937</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="kw">pBCCGo</span>(<span class="dt">q =</span> <span class="fl">1.2</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>) <span class="co">### F(1.2) = P(X &lt;= 1.2).</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="kw">pBCCGo</span>(<span class="dt">q =</span> <span class="fl">1.2</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>) <span class="co"># F(1.2) = P(X &lt;= 1.2).</span></span></code></pre></div>
 <pre><code>## [1] 0.9895491</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="kw">qBCCGo</span>(<span class="dt">p =</span> <span class="fl">0.7</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>) <span class="co">### q: F(q)  = P(X &lt;= q) = 0.7.</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="kw">qBCCGo</span>(<span class="dt">p =</span> <span class="fl">0.7</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>) <span class="co"># q: F(q)  = P(X &lt;= q) = 0.7.</span></span></code></pre></div>
 <pre><code>## [1] 1.050513</code></pre>
 <p>Vamos simular 100 valores aleatórios da distribuição Box-Cox Cole and Green, plotar o histograma dos valores simulados e sobrepor a curva da função densidade de probabilidade do modelo usado na simulação.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="kw">set.seed</span>(<span class="dv">87</span>) <span class="co">### Fixando a semente.</span></span>
-<span id="cb73-2"><a href="#cb73-2"></a>x &lt;-<span class="st"> </span><span class="kw">rBCCGo</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>) <span class="co">### Gerando 100 valores aleatórios.</span></span>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="kw">set.seed</span>(<span class="dv">87</span>) <span class="co"># Fixando a semente.</span></span>
+<span id="cb73-2"><a href="#cb73-2"></a>x &lt;-<span class="st"> </span><span class="kw">rBCCGo</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>) <span class="co"># Gerando 100 valores aleatórios.</span></span>
 <span id="cb73-3"><a href="#cb73-3"></a><span class="kw">hist</span>(x, <span class="dt">probability =</span> <span class="ot">TRUE</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">4.5</span>))</span>
 <span id="cb73-4"><a href="#cb73-4"></a><span class="kw">curve</span>(<span class="kw">dBCCGo</span>(x, <span class="dt">mu =</span> <span class="dv">1</span>, <span class="dt">sigma =</span> <span class="fl">0.1</span>, <span class="dt">nu =</span> <span class="fl">2.5</span>), <span class="dt">from =</span> <span class="fl">0.6</span>, <span class="dt">to =</span> <span class="fl">1.3</span>, </span>
 <span id="cb73-5"><a href="#cb73-5"></a>      <span class="dt">add =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="kw">gamlss.demo</span>() <span class="co">### Alguma demos.</span></span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="kw">gamlss.demo</span>() <span class="co"># Alguma demos.</span></span></code></pre></div>
 <pre><code>## &lt;Tcl&gt;</code></pre>
 <p>Voltemos à análise dos dados dos preços de aluguel de imóveis. Vamos ajustar dois modelos: o primeiro (mod6) não incluindo covariáveis na modelagem do parâmetro de forma (<span class="math inline">\(\nu\)</span>). No segundo (mod7) as mesmas covariáveis usadas para modelar <span class="math inline">\(\mu\)</span> são usadas também para <span class="math inline">\(\nu\)</span>.</p>
-<div id="modelos-6-e-7" class="section level5">
-<h5>Modelos 6 e 7</h5>
+</div>
+<div id="modelos-6-e-7" class="section level2">
+<h2>Modelos 6 e 7</h2>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a>mod6 &lt;-<span class="st"> </span><span class="kw">gamlss</span>(R <span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>H <span class="op">+</span><span class="st"> </span>loc,</span>
 <span id="cb76-2"><a href="#cb76-2"></a>               <span class="dt">sigma.fo =</span><span class="op">~</span><span class="st"> </span><span class="kw">pb</span>(Fl) <span class="op">+</span><span class="st"> </span><span class="kw">pb</span>(A) <span class="op">+</span><span class="st"> </span>loc, <span class="dt">family =</span> BCCGo, <span class="dt">data =</span> rent)</span></code></pre></div>
 <pre><code>## GAMLSS-RS iteration 1: Global Deviance = 27631.55 
@@ -882,7 +890,7 @@ div.tocify {
 ## mod4 22.25035 27614.78</code></pre>
 <p>O modelo mod7 produziu menor valor de AIC, indicando, portanto, melhor ajuste. Nesse caso, além de locação e escala, também a forma da distribuição varia conforme os valores das covariáveis.</p>
 <p>Vamos avaliar possível retirada dos termos no preditor do parâmetro de forma em mod7.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="kw">drop1</span>(mod7, <span class="dt">what =</span> <span class="st">&#39;nu&#39;</span>) <span class="co">### Leva tempo...</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="kw">drop1</span>(mod7, <span class="dt">what =</span> <span class="st">&#39;nu&#39;</span>) <span class="co"># Leva tempo...</span></span></code></pre></div>
 <pre><code>## Single term deletions for
 ## nu
 ## 
@@ -931,9 +939,8 @@ div.tocify {
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="kw">wp</span>(mod7_alt, <span class="dt">ylim.all =</span> <span class="fl">0.6</span>, <span class="dt">main =</span> <span class="st">&#39;mod7_alt&#39;</span>)</span></code></pre></div>
 <p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-39-2.png" width="672" /> O modelo, aparentemente, se ajusta bem aos dados.</p>
 </div>
-</div>
-<div id="explorar-modelo-ajustado" class="section level4">
-<h4>Explorar modelo ajustado</h4>
+<div id="explorar-modelo-ajustado" class="section level2">
+<h2>Explorar modelo ajustado</h2>
 <p>Neste ponto, vamos explorar o modelo ajustado, estimativas e predições. Vamos considerar o último modelo ajustado, mod7_alt.</p>
 <p>Vamos estimar os parâmetros para as distribuições dos preços de aluguel em dois cenários.</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a>data_new &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Fl =</span> <span class="kw">c</span>(<span class="dv">52</span>, <span class="dv">82</span>), <span class="dt">A =</span> <span class="kw">c</span>(<span class="dv">1940</span>, <span class="dv">1975</span>), <span class="dt">H =</span> <span class="kw">c</span>(<span class="st">&#39;1&#39;</span>, <span class="st">&#39;0&#39;</span>), <span class="dt">loc =</span> <span class="kw">c</span>(<span class="st">&#39;1&#39;</span>, <span class="st">&#39;3&#39;</span>))</span>
@@ -982,9 +989,9 @@ div.tocify {
 <span id="cb113-5"><a href="#cb113-5"></a><span class="kw">legend</span>(<span class="dt">x =</span> <span class="st">&#39;topright&#39;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&#39;Imovel 1&#39;</span>, <span class="st">&#39;Imovel 2&#39;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&#39;red&#39;</span>, <span class="st">&#39;blue&#39;</span>), <span class="dt">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="exemplo_inicial_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p>Probabilidade de um imóvel com valor de aluguel inferior a $500 para cada um dos dois perfis.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a><span class="kw">pBCCGo</span>(<span class="dv">500</span>, <span class="dt">mu =</span> pmu[<span class="dv">1</span>], <span class="dt">sigma =</span> psigma[<span class="dv">1</span>], <span class="dt">nu =</span> pnu[<span class="dv">1</span>]) <span class="co">### Perfil 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a><span class="kw">pBCCGo</span>(<span class="dv">500</span>, <span class="dt">mu =</span> pmu[<span class="dv">1</span>], <span class="dt">sigma =</span> psigma[<span class="dv">1</span>], <span class="dt">nu =</span> pnu[<span class="dv">1</span>]) <span class="co"># Perfil 1</span></span></code></pre></div>
 <pre><code>## [1] 0.7501413</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1"></a><span class="kw">pBCCGo</span>(<span class="dv">500</span>, <span class="dt">mu =</span> pmu[<span class="dv">2</span>], <span class="dt">sigma =</span> psigma[<span class="dv">2</span>], <span class="dt">nu =</span> pnu[<span class="dv">2</span>]) <span class="co">### Perfil 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1"></a><span class="kw">pBCCGo</span>(<span class="dv">500</span>, <span class="dt">mu =</span> pmu[<span class="dv">2</span>], <span class="dt">sigma =</span> psigma[<span class="dv">2</span>], <span class="dt">nu =</span> pnu[<span class="dv">2</span>]) <span class="co"># Perfil 2</span></span></code></pre></div>
 <pre><code>## [1] 0.0145249</code></pre>
 <p>Probabilidade de um imóvel com valor de aluguel superior a $1000 para cada um dos dois perfis.</p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1"></a><span class="kw">pBCCGo</span>(<span class="dv">1000</span>, <span class="dt">mu =</span> pmu[<span class="dv">1</span>], <span class="dt">sigma =</span> psigma[<span class="dv">1</span>], <span class="dt">nu =</span> pnu[<span class="dv">1</span>], <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>) </span></code></pre></div>

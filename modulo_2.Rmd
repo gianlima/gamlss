@@ -1,0 +1,63 @@
+---
+title: "Módulo 2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+```
+
+***
+##### Slide 7
+Modelo semi-paramétrico
+
+
+***
+##### Slide 8
+Modelo paramétrico
+
+- Apenas os termos principais
+
+***
+##### Slide 9
+GAMLSS de efeitos aleatórios
+
+- Efeitos fixos e aleatórios  
+- Gammas associados a efeitos aleatórios  
+
+Situação de uso:   
+- Níveis hierárquicos no modelo  
+- Correlação de medidas repetidas
+
+Esses efeitos capturam a dependência das medidas repetidas.
+
+**Exemplo:** Individuos agrupados de uma forma natural, variâncias dentro de escolas e cada escola tem turmas (níveis diferentes de agrupamentos). Objetivo: Incluir efeitos aleatórios para capturar a heterogeneidade entre os níveis e homogeneidade das medidas dentro de cada um dos níveis.
+
+***
+##### Slide 12
+
+Função de verossimilhança. $\theta$ são todos os parâmetros de interesse do mdoelo. 
+
+- Assume-se que as observações são independentes.
+
+***
+##### Slide 25
+
+Algoritmos RS: só usa-se as primeiras derivadas. `gamlss(..., method = RS())`  
+Algoritmo CG: primeira, segunda derivada e cruzada.
+`gamlss(..., method = CG())`  
+Algoritmo misto: mistura dos dois
+`gamlss(..., method = mixed())`  
+
+Obter os datasets:
+```{r}
+help(package = "gamlss.data")
+```
+
+```{r}
+data(species)
+species <- transform(species, x=log(lake))
+m2 <- gamlss(fish~x, sigma.fo=~x, family=PIG, data=species, method=RS())
+```
+
+
