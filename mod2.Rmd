@@ -1,0 +1,23 @@
+---
+title: "Módulo 2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Algoritmos
+
+```{r echo=FALSE, out.width="100%", out.height = "500px"}
+knitr::include_graphics("arquivos_pdf/mod2_1.pdf")
+```
+
+***
+
+### A função gamlss
+
+```{r echo=FALSE, out.width="100%", out.height = "500px"}
+knitr::include_graphics("arquivos_pdf/mod2_2.pdf")
+```
+

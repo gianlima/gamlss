@@ -11,16 +11,20 @@ navbar:
       href: index.html
     - text: "Módulos"
       menu:
-      - text: "Módulo 1 - introdução"
-      - text: "Resumo"
+      - text: "Módulo 1 - Resumo"
         href: Caderno.html
-      - text: "Conteúdo"
+      - text: "Módulo 1 - Conteúdo"
         href: exemplo_inicial.html
-      - text: "Módulo 3"
-      - text: "Módulo 3 - Parte 1"
+      - text: "Módulo 2"
+        href: mod2.html
+      - text: "Módulo 3 - 1/2"
         href: mod3_1.html
-      - text: "Módulo 3 - Parte 1"
+      - text: "Módulo 3 - 2/2"
         href: mod3_2.html
+      - text: "Módulo 4"
+        href: mod4.html
+      - text: "Módulo 5"
+        href: mod5.html
         
         
         
